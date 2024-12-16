@@ -1,0 +1,858 @@
+# DEGEN ORACLE AI - Project Guidelines & Rules
+
+## Core Purpose
+- Build a tool for discovering and analyzing new AI tokens on Solana
+- Set up real-time AI token scanning every 10 minutes
+- Focus on filtering and tracking high-potential tokens
+- Provide essential data for investment decisions
+
+## Core Purpose
+- Primary Objectives:
+  * Build an advanced AI token discovery and analysis platform on Solana
+  * Automate the identification of high-potential AI and Agent tokens
+  * Provide comprehensive analysis tools for informed investment decisions
+  * Enable real-time monitoring and alerts for market opportunities
+
+- Token Discovery:
+  * Continuous scanning every 10 minutes for new AI tokens
+  * Data Sources:
+    - Birdeye API (Primary source)
+    - Jupiter Aggregator API (Secondary)
+    - SERUM DEX API (Secondary)
+    - Solscan API (Contract verification)
+  * Historical Data Retention:
+    - Price & Metrics: 30 days
+    - Scan History: 7 days
+    - Social Metrics: 14 days
+  * Data Collection Frequency:
+    - Price Data: Every 1 minute
+    - Market Data: Every 5 minutes
+    - Social Data: Every 15 minutes
+    - Contract Data: Every 30 minutes
+
+- Analysis Capabilities:
+  * Multi-source data integration (Birdeye, LunarCrush, YAPS, Cookie)
+  * Advanced sentiment analysis from social media and AI communities
+  * Technical analysis and pattern recognition
+  * Risk assessment and growth prediction
+
+- User Experience:
+  * Intuitive interface for token discovery and analysis
+  * Customizable watchlists and alerts
+  * Real-time notifications via Telegram
+  * Detailed token insights and metrics
+
+- Platform Intelligence:
+  * AI-powered pattern recognition
+  * Machine learning for growth prediction
+  * Automated strategy generation
+  * Continuous learning from successful tokens
+
+- Risk Management:
+  * Comprehensive token validation
+  * Scam and honeypot detection
+  * Liquidity and holder analysis
+  * Market manipulation detection
+
+## Key Features Priority
+1. Market Trends
+   - Current Trend Analysis:
+     * Display dominant token categories
+     * Key Metrics:
+       - Volume Growth
+       - New Tokens Count
+       - Social Engagement
+       - Price Performance
+     * Time Ranges: 24h, 7d, 30d
+   - Emerging Trends Detection:
+     * Early Signals:
+       - Social Media Mentions
+       - New Projects Launch Rate
+       - Developer Activity
+       - VC Investments
+       - Community Growth
+   - Dashboard Components:
+     * Key Metrics Cards:
+       - Total AI Market Cap
+       - 24h Volume
+       - Total AI Tokens
+       - Hot Trend
+     * Charts:
+       - Category Performance Chart (30d)
+       - Emerging Trends Chart
+       - Social Sentiment Analysis
+     * Data Tables:
+       - Trending Categories with:
+         * Category Name
+         * 24h Volume
+         * Volume Change
+         * Number of Tokens
+         * Top Token in Category
+         * Price & Change
+   - Auto Refresh: Every 5 minutes
+   - Interactive Elements:
+     * Time Range Selectors
+     * Category Filters
+     * Drill-down Capabilities
+
+2. Token Discovery
+   - Unified interface for finding potential tokens
+   - Two Discovery Modes:
+     * AI Recommendations:
+       - Automatic scanning by AI model
+       - Smart filtering based on growth potential
+       - Real-time updates every 10 minutes
+       - Growth prediction scores
+       - Risk assessment
+     * Manual Scanner:
+       - User-defined parameters:
+         * Market Data:
+           - Min/Max Market Cap (Default Min: 50,000 USD)
+           - Min/Max Liquidity (Default Min: 30,000 USD)
+           - Min/Max Price
+         * Holders & Distribution:
+           - Min/Max Holders (Default Min: 100)
+           - Min/Max Top 10 Holders Percentage
+         * Volume & Activity:
+           - Min Hourly Volume
+           - Min Hourly Transactions
+           - Max Token Age (in days)
+         * Performance:
+           - Min 1h Price Change
+           - Min 24h Price Change
+         * Risk & Validation:
+           - Require Verified Contract (Default: Yes)
+           - Require Social Media (Default: Yes)
+       - Custom filters and sorting
+       - On-demand scanning
+   - Common Features:
+     * Token validation & verification
+     * Quick analysis tools
+     * Add to watchlist functionality
+     * Scan history tracking
+     * Risk indicators
+   - Display Columns:
+     * Token Info (Logo, Name, Symbol)
+     * Market Data (Price, MCap, Volume)
+     * Performance Metrics
+     * Social Links
+     * Risk Score
+     * Actions (Add/Remove from Watchlist)
+
+3. Watchlist
+   - Track selected tokens from Discovery
+   - Custom alert settings per token
+   - Alert Conditions:
+     * Price change >= 10%
+     * Volume increase >= 100%
+     * Holders increase >= 20%
+   - Performance monitoring
+   - Risk tracking
+   - Quick actions (Remove, Set Alerts)
+
+4. Token Analysis
+   - Basic Info: Market Cap, Holders, Volume
+   - Social Metrics from LunarCrush
+     * Twitter Followers & Growth
+     * Telegram Members & Growth
+     * Social Engagement Score
+     * Sentiment Analysis
+   - Additional Sentiment Analysis
+     * Twitter Sentiment (YAPS)
+     * AI Agent Sentiment (Cookie)
+     * Combined Sentiment Score
+     * Sentiment Trend Analysis
+   - Price & Trading Analysis from Birdeye
+     * Price Action & Volatility
+     * Volume Analysis
+     * Liquidity Analysis
+     * Trading Patterns
+   - Holder Analysis & Distribution
+     * Top Holders Distribution
+     * Holder Growth Rate
+     * Average Holding Time
+     * Wallet Behavior Analysis
+   - Community Growth & Engagement
+   - Risk Assessment
+
+5. Market Trends & AI Learning
+   - Analyze Market Trends from LunarCrush
+     * Trending Categories
+     * Social Volume Trends
+     * Sentiment Trends
+     * Influencer Activity
+   - Learn Patterns from Successful Tokens
+     * Launch Patterns
+     * Growth Patterns
+     * Volume Patterns
+     * Social Patterns
+   - Generate Trading Strategies
+   - Alert on Pattern Matches
+   - AI Growth Prediction
+     - Growth Probability Prediction
+       * Short-term (24h)
+       * Mid-term (7d)
+       * Long-term (30d)
+     - Growth Factor Analysis
+     - Prediction Confidence Assessment
+
+6. Token Detail View
+   - Basic Information:
+     * Token Logo & Name
+     * Contract Address (with copy & explorer link)
+     * Launch Date & Age
+     * Tags & Categories
+     * Social Links (Website, Twitter, Telegram)
+     * Contract Verification Status
+
+   - Market Overview:
+     * Current Price & Changes (1h, 24h, 7d)
+     * Market Cap & Fully Diluted Valuation
+     * Trading Volume (24h)
+     * Liquidity Information:
+       - Total Liquidity
+       - Liquidity Pairs
+       - Liquidity Locks
+
+   - Trading Analysis:
+     * DEX Information:
+       - Trading Pairs
+       - Volume Distribution
+       - Price Impact Analysis
+     * Buy/Sell Ratio (24h)
+     * Large Transactions (>$1000)
+     * Trading History
+
+   - Holder Analysis:
+     * Total Holders Count & Growth
+     * Distribution Chart:
+       - Top 10/50/100 Holders
+       - Holder Concentration
+     * Holder Type Analysis:
+       - Normal Wallets
+       - Contracts
+       - DEX Pairs
+     * Recent Holder Changes
+
+   - Social & Community:
+     * Twitter Metrics:
+       - Followers & Growth
+       - Engagement Rate
+       - Recent Tweet Performance
+     * Telegram Metrics:
+       - Member Count & Growth
+       - Active Members
+       - Message Frequency
+     * Overall Social Score
+     * Community Sentiment Analysis
+
+   - Risk Assessment:
+     * Contract Risk Score:
+       - Code Analysis
+       - Ownership Status
+       - Mint/Burn Functions
+     * Liquidity Risk:
+       - Lock Status
+       - Concentration
+     * Trading Risk:
+       - Price Manipulation Signs
+       - Wash Trading Detection
+     * Overall Risk Score
+
+   - Quick Actions:
+     * Add to Watchlist
+     * Set Custom Alerts
+     * Share Token
+     * View on Explorer
+
+   - Data Sources:
+     * Birdeye (Market Data)
+     * Jupiter (DEX Data)
+     * LunarCrush (Social Data)
+     * Solscan (Contract Data)
+
+## Database Schema
+1. Tokens
+   - Basic Info (address, name, symbol)
+   - Market Data (price, mcap, volume)
+   - Social Metrics
+   - Analysis Results
+   - Category & Tags
+   - Launch Info
+   - Contract Analysis
+   - Risk Metrics
+   - Trading History
+   - Price Predictions
+   - Pattern Matches
+   - Risk Scores
+   - Social Sentiment
+   - Community Metrics
+   - Historical Price Data
+   - Token Supply Information
+   - Token Distribution Metrics
+   - Smart Contract Audit Results
+   - First Seen Date
+   - Last Updated Timestamp
+
+2. ScanHistory
+   - Scan Parameters
+   - Results
+   - Timestamp
+   - Performance Metrics
+   - Discovered Tokens
+   - Filter Settings
+   - Execution Time
+   - Error Logs
+   - Success Rate
+   - Processing Time
+   - Resource Usage
+   - Scan Type (Manual/Auto)
+   - Tokens Found Count
+   - New Tokens Count
+   - Scan Status
+
+3. Watchlist
+   - User Settings
+   - Token References
+   - Alert Settings
+   - Notes & Tags
+   - Custom Alerts
+   - Entry Points
+   - Risk Levels
+
+4. AIModels
+   - Training Data
+   - Model Parameters
+   - Performance Metrics
+   - Strategy Rules
+   - Prediction Models
+     - Growth Prediction Model
+     - Confidence Metrics
+     - Historical Accuracy
+     - Feature Importance
+     - Model Versions
+     - Training History
+     - Validation Results
+
+## API Integration
+1. Birdeye API
+   - Token Discovery
+   - Market Data
+   - Trading Analytics
+   - Rate Limits: 60 calls/minute
+   - Cache Duration: 5 minutes
+   - Error Handling Strategy
+
+2. LunarCrush API
+   - Social Metrics
+   - Market Trends
+   - Sentiment Analysis
+   - Rate Limits: 30 calls/minute
+   - Cache Duration: 15 minutes
+   - Fallback Strategy
+
+3. YAPS API
+   - Twitter Sentiment Analysis
+   - Social Media Monitoring
+   - Real-time Sentiment Tracking
+   - Rate Limits: TBD
+   - Cache Duration: 15 minutes
+
+4. Cookie API
+   - AI Agent Sentiment Analysis
+   - Community Engagement Metrics
+   - Agent Behavior Tracking
+   - Rate Limits: TBD
+   - Cache Duration: 15 minutes
+
+5. Telegram API
+   - Alert Notifications
+   - Status Updates
+   - Command Interface
+   - Custom Commands:
+     * /scan - Manual scan
+     * /add <address> - Add to watchlist
+     * /alerts - View active alerts
+     * /predict <address> - Get prediction
+
+6. Rate Limiting Strategy
+   - Token Bucket Algorithm
+   - Queue Management
+   - Priority Levels:
+     * Critical Operations
+     * Regular Operations
+     * Background Tasks
+   - Retry Policies
+   - Circuit Breaker Pattern
+
+## AI Components
+1. Token Classifier
+   - AI/Agent Detection
+   - Category Classification
+   - Risk Assessment
+
+2. Pattern Recognition
+   - Price Pattern Analysis
+   - Volume Pattern Analysis
+   - Social Trend Analysis
+
+3. Strategy Generator
+   - Learn from Historical Data
+   - Generate Trading Rules
+   - Optimize Parameters
+
+4. Growth Predictor
+   - Market Cap Growth Prediction
+   - Volume Growth Prediction
+   - Social Growth Prediction
+   - Confidence Scoring
+   - Key Growth Factors Analysis
+
+## Monitoring & Alerts
+1. Price Alerts
+   - Percentage Changes
+   - Support/Resistance Levels
+   - Volume Spikes
+2. Social Alerts
+   - Engagement Spikes
+   - Sentiment Changes
+   - New Announcements
+3. Pattern Alerts
+   - Strategy Matches
+   - Risk Warnings
+   - Opportunity Signals
+4. Growth Prediction Alerts
+   - High Growth Potential Alerts
+   - Growth Pattern Recognition
+   - Confidence Level Updates
+   - Factor Change Notifications
+5. Token Health Monitoring
+   - Smart Contract Activity
+   - Liquidity Pool Changes
+   - Unusual Trading Patterns
+   - Whale Movement Detection
+   - Token Burn/Mint Events
+6. Telegram Notifications Only
+   - Alert Types:
+     - Price change ≥ 10%
+     - Volume increase ≥ 100%
+     - Holders increase ≥ 20%
+   - Alert Limits:
+     - Maximum 50 alerts per day
+     - 30 minutes cooldown between alerts
+
+## Future Considerations
+- Add more categories (Sci-Fi, Meme, etc)
+- Portfolio Tracking
+- Advanced Analytics
+- Community Features
+
+## Minimum Requirements
+1. Token Criteria
+   - Market Cap >= 50,000 USD
+   - Holders >= 100
+   - Liquidity >= 30,000 USD
+   - At least 1 active social media platform
+   - Contract verified
+   - No honeypot/scam patterns
+
+2. Performance Requirements
+   - Scan completion within 30 seconds
+   - API response time < 2 seconds
+   - Real-time data updates
+   - System uptime > 99.9%
+
+3. Security Requirements
+   - API authentication
+   - Rate limiting
+   - Data encryption
+   - Input validation
+   - XSS protection
+
+## Error Handling
+1. API Errors
+   - Rate limit exceeded
+   - Service unavailable
+   - Invalid response
+   - Timeout handling
+   - Retry mechanisms
+
+2. Data Validation
+   - Input sanitization
+   - Format verification
+   - Range checking
+   - Null handling
+
+3. Recovery Procedures
+   - Automatic retry
+   - Fallback options
+   - Data reconciliation
+   - Alert notifications
+
+## Testing Strategy
+1. Unit Tests
+   - API integration
+   - Data processing
+   - Pattern recognition
+   - Alert generation
+
+2. Integration Tests
+   - End-to-end flows
+   - API chaining
+   - Data consistency
+
+3. Performance Tests
+   - Load testing
+   - Stress testing
+   - Scalability testing
+   - Memory usage
+
+## Deployment
+1. Infrastructure
+   - Cloud hosting
+   - Load balancing
+   - Auto-scaling
+   - CDN integration
+
+2. Monitoring
+   - System health
+   - Performance metrics
+   - Error tracking
+   - Resource usage
+
+3. Maintenance
+   - Regular updates
+   - Database optimization
+   - Cache management
+   - Log rotation
+
+## Documentation
+1. Technical Docs
+   - API documentation
+   - Database schema
+   - System architecture
+   - Integration guides
+
+2. User Guides
+   - Feature tutorials
+   - Configuration guides
+   - Troubleshooting
+   - FAQs
+
+## Technical Stack
+1. Frontend
+   - Framework: React + TypeScript
+   - State Management: React Context
+   - Styling:
+     * TailwindCSS
+     * Heroicons
+     * Material UI components
+   - Charts & Visualization:
+     * TradingView Lightweight Charts
+     * Recharts
+     * D3.js
+   - Development Tools:
+     * Vite
+     * ESLint
+     * Prettier
+
+2. Backend
+   - Language: Python 3.9+
+   - Framework: FastAPI
+   - Database:
+     * PostgreSQL
+     * Redis (caching)
+   - ORM: SQLAlchemy
+   - Task Queue: Celery
+   - WebSocket: FastAPI WebSocket
+
+3. External APIs & SDKs
+   - Blockchain:
+     * Birdeye API
+     * Solana Web3.js
+     * @solana/web3.js
+   - Social Analytics:
+     * LunarCrush API
+   - Messaging:
+     * Telegram Bot API
+     * python-telegram-bot
+
+4. DevOps & Infrastructure
+   - Containerization:
+     * Docker
+     * Docker Compose
+   - Cloud Services:
+     * AWS ECS/EKS
+     * AWS RDS
+     * AWS ElastiCache
+     * AWS CloudFront
+   - Monitoring:
+     * Prometheus
+     * Grafana
+     * Sentry
+
+5. Security Tools
+   - Authentication:
+     * JWT
+     * OAuth2
+   - API Security:
+     * API Key management
+     * Rate limiting (FastAPI-limiter)
+   - Data Encryption:
+     * Python cryptography
+     * SSL/TLS
+
+6. Testing Tools
+   - Frontend:
+     * Jest
+     * React Testing Library
+     * Cypress
+   - Backend:
+     * pytest
+     * pytest-asyncio
+     * pytest-cov
+   - Load Testing:
+     * Locust
+     * k6
+
+7. Development Environment
+   - IDE:
+     * VSCode
+     * PyCharm
+   - Version Control:
+     * Git
+     * GitHub
+   - Documentation:
+     * Swagger/OpenAPI
+     * Sphinx
+     * MkDocs
+
+## UI/UX Design
+1. Theme
+   - Dark Theme Primary
+   - Color Palette:
+     * Background: #000000
+     * Secondary Background: #111111
+     * Primary: #00FF00
+     * Secondary: #1A1A1A
+     * Text Primary: #FFFFFF
+     * Text Secondary: #888888
+     * Border: #333333
+     * Success: #00FF00
+     * Error: #FF0000
+     * Warning: #FFB800
+
+2. Layout
+   - Top Navigation Bar
+   - Main Content Area
+   - Status Bar below Nav
+   - Clean, Minimal Design
+   - Full-width Layout
+   - Grid-based Content Layout
+
+3. Components
+   - Dashboard:
+     * Layout:
+       - Top Row: Key Metrics Cards
+       - Middle Row: Performance & Trends Charts
+       - Bottom Row: Tables & Social Sentiment
+     * Card Styles:
+       - Background: #111111
+       - Border: #333333
+       - Hover Effect: Subtle glow
+       - Metrics: Large numbers
+       - Change %: Color coded (green/red)
+     * Chart Styles:
+       - Dark theme compatible
+       - Interactive tooltips
+       - Gradient fills
+       - Legend with toggle
+     * Responsive Layout:
+       - Desktop: 3-column grid
+       - Tablet: 2-column grid
+       - Mobile: Single column
+   - Tables:
+     * Modern, Clean Design
+     * Hover Effects
+     * Gradient Borders
+     * Compact Information Display
+     * Quick Actions on Hover
+     * Integrated Filters
+     * Smart Pagination
+     * Scanner Table Styles:
+       - Scanner Filters:
+         - Default Values:
+           * Min Market Cap: 50,000 USD
+           * Min Holders: 100
+           * Min Liquidity: 30,000 USD
+         - Input Styles:
+           * Background: Black
+           * Border: #333333
+           * Focus: Primary color (#88D693)
+           * Text: White
+           * Labels: Gray (text-gray-400)
+         - Layout:
+           * Grid: 3 columns
+           * Spacing: gap-4
+           * Container: Dark background (#111111)
+           * Padding: p-4
+           * Border: #333333
+       - Colors:
+         * MCap: Yellow (rgb(255,208,57)) for >=1M, White for default
+         * Volume: Blue (rgb(147,197,253)) for >=1M, White for default
+         * Holders: Blue (rgb(147,197,253)) for >=1K, White for default
+         * Price Changes: Green (#88D693) for positive, Red (rgb(240,148,164)) for negative
+         * Dev Actions: Yellow for HOLD, Green for ADD, Red for SELL_ALL
+         * Watchlist Star: Gray (text-gray-500) default, Yellow (rgb(255,208,57)) when active
+       - Typography:
+         * Text size: text-xs
+         * Headers: text-sm
+       - Column Layout:
+         * Watchlist Star: Left-most position, toggleable
+         * Token: Logo + Name + Copy Button + Shortened CA + Social Icons
+         * Age: Days count
+         * Liq/MCap: Two-line display (Liq top, MCap bottom)
+         * Numeric Columns: Right-aligned with units
+         * Action Columns: Center-aligned
+   - Charts:
+     * Minimal TradingView Charts
+     * Neon Accent Lines
+     * Dark Background
+     * Grid Lines in Secondary Color
+     * Tooltip with Detailed Info
+   - Forms:
+     * Minimal Input Fields
+     * Neon Focus Effects
+     * Custom Dropdowns
+     * Toggle Switches with Glow
+     * Search with Auto-suggest
+   - Alerts:
+     * Floating Notifications
+     * Minimal Design
+     * Success/Error Indicators
+     * Auto-dismiss
+     * Position: Top-Right
+
+4. Responsive Design
+   - Desktop first
+   - Tablet support
+   - Mobile view (limited features)
+
+## Scanner View Standards
+1. Layout Structure:
+  - Filters Panel (Left/Top)
+  - Results Table (Main Area)
+  - Quick Actions (Right)
+
+2. Filter Components:
+  - Market Data Filters:
+    * Market Cap Range
+    * Liquidity Range
+    * Volume Range
+    * Price Range
+  - Holder Filters:
+    * Total Holders
+    * Top Holders %
+    * Holder Growth Rate
+  - Risk Filters:
+    * Contract Verification
+    * Liquidity Lock
+    * Sniper Detection
+    * Insider Activity
+
+3. Results Table:
+  - Columns:
+    * Token Basic Info (Logo, Name, Symbol)
+    * Market Metrics (MCap, Liq, Vol)
+    * Holder Info (Count, Distribution)
+    * Risk Indicators
+    * AI Score
+    * Quick Actions
+  - Sorting:
+    * Default: Latest First
+    * Multiple Sort Options
+  - Pagination:
+    * 25 items per page
+    * Load More functionality
+
+4. Data Updates:
+  - Auto-refresh: Every 30 seconds
+  - Manual refresh option
+  - Last updated indicator
+
+5. Visual Indicators:
+  - Risk Levels:
+    * Safe: #88D693
+    * Warning: rgb(255,208,57)
+    * Danger: rgb(240,148,164)
+  - Changes:
+    * Positive: #88D693
+    * Negative: rgb(240,148,164)
+  - Status:
+    * Active: #88D693
+    * Inactive: text-gray-400
+
+6. Performance Requirements:
+  - Initial load: < 2 seconds
+  - Filter updates: < 500ms
+  - Sort updates: < 200ms
+  - Memory usage optimization
+
+## Token Detail View Standards
+1. Visual Hierarchy:
+  - Primary Metrics: Large text (text-xl/2xl), prominent colors
+  - Secondary Metrics: Medium text (text-lg), standard colors
+  - Supporting Info: Small text (text-sm), muted colors
+
+2. Color Coding:
+  - Success/Positive: #88D693
+  - Warning/Neutral: rgb(255,208,57)
+  - Danger/Negative: rgb(240,148,164)
+  - Info/Links: rgb(147,197,253)
+  - Muted Text: text-gray-400
+
+3. Card Layout:
+  - Standard Padding: p-4
+  - Rounded Corners: rounded-lg
+  - Background: bg-[#1A1A1A]
+  - Header Format:
+    * Icon + Title
+    * Optional Status Badge
+    * Consistent spacing (space-x-2)
+
+4. Data Presentation:
+  - Numbers: Use formatNumber() for large numbers
+  - Percentages: Use formatPercent()
+  - Time: Relative format (e.g., "2h ago")
+  - Status: Icon + Text combination
+
+5. Section Order Priority:
+  1. Basic Information & Quick Stats
+  2. Market Overview & Trading Analysis
+  3. Holder Analysis & Social Metrics
+  4. Risk Assessment
+  5. AI Analysis & Recommendations
+  6. Additional Details (Development, Team, etc.)
+
+6. Interactive Elements:
+  - Buttons: Consistent hover states
+  - Links: Clear visual indicators
+  - Charts: Interactive tooltips
+  - Copy Functions: Visual feedback
+
+7. Mobile Responsiveness:
+  - Stack columns on smaller screens
+  - Adjust font sizes for readability
+  - Maintain data hierarchy
+
+8. Required Data Sources:
+  - Price/Market: Birdeye API
+  - Social: LunarCrush API
+  - Contract: Solscan API
+  - Sentiment: YAPS/Cookie API
+
+9. Update Frequencies:
+  - Price Data: Real-time/1min
+  - Market Data: 5min
+  - Social Data: 15min
+  - Risk Analysis: 30min
