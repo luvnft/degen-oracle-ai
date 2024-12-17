@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTokenStore } from '../store/tokenStore';
-import { FaTwitter, FaTelegram, FaGlobe, FaChartLine, FaUsers, FaLock, FaExclamationTriangle, FaMoneyBillWave, FaExchangeAlt, FaShieldAlt, FaCode, FaChartBar, FaCoins, FaWater, FaChartArea, FaArrowRight, FaSignal, FaRobot, FaCrosshairs, FaUserSecret, FaHandHoldingUsd, FaHistory, FaUserClock, FaUsers as FaUsersGroup, FaChartPie, FaExclamationCircle, FaCheckCircle, FaHourglassHalf, FaArrowUp, FaCircle, FaDiscord, FaUserTie, FaTrendUp } from 'react-icons/fa';
+import { FaTwitter, FaTelegram, FaGlobe, FaChartLine, FaUsers, FaLock, FaExclamationTriangle, FaMoneyBillWave, FaExchangeAlt, FaShieldAlt, FaCode, FaChartBar, FaCoins, FaWater, FaChartArea, FaArrowRight, FaSignal, FaRobot, FaCrosshairs, FaUserSecret, FaHandHoldingUsd, FaHistory, FaUserClock, FaUsers as FaUsersGroup, FaChartPie, FaExclamationCircle, FaCheckCircle, FaHourglassHalf, FaArrowUp, FaCircle, FaDiscord, FaUserTie } from 'react-icons/fa';
 import { DocumentDuplicateIcon, ChartBarIcon, CurrencyDollarIcon, ClockIcon, ShieldCheckIcon, ExclamationCircleIcon, ArrowTrendingUpIcon } from '@heroicons/react/24/outline';
 import { formatNumber, formatPercent } from '../utils/format';
 import { PieChart } from '../components/charts/PieChart';
 import LineChart from '../components/charts/LineChart';
 import AreaChart from '../components/charts/AreaChart';
 import { Skeleton } from '../components/shared/Skeleton';
-import { TokenDetailInfo } from '../types/index';
+import { TokenDetailInfo, ChartDataPoint, PieChartDataPoint, TabItem, AlertSettings } from '../types/index';
 import { Checkbox } from '../components/form/Checkbox';
 import { Input } from '../components/form/Input';
 
@@ -18,7 +18,7 @@ const TokenDetail = () => {
   const token = tokens.find(t => t.address === address) as TokenDetailInfo | undefined;
   const [activeTab, setActiveTab] = useState('overview');
   const [isAlertModalOpen, setIsAlertModalOpen] = useState(false);
-  const [alertSettings, setAlertSettings] = useState({
+  const [alertSettings, setAlertSettings] = useState<AlertSettings>({
     priceChange: true,
     priceChangeThreshold: 10,
     volumeChange: true, 
@@ -105,43 +105,43 @@ const TokenDetail = () => {
     // TODO: Add toast notification
   };
 
-  const volumeDistributionData = [
+  const volumeDistributionData: PieChartDataPoint[] = [
     { name: 'DEX 1', value: 60, color: '#88D693' },
     { name: 'DEX 2', value: 30, color: '#4CAF50' },
     { name: 'Others', value: 10, color: '#2E7D32' },
   ];
 
-  const holderDistributionData = [
-    { name: 'Top 10', value: token.top10HoldersPercent, color: '#88D693' },
-    { name: 'Others', value: 100 - token.top10HoldersPercent, color: '#4CAF50' },
+  const holderDistributionData: PieChartDataPoint[] = [
+    { name: 'Top 10', value: token.topHoldersPercent, color: '#88D693' },
+    { name: 'Others', value: 100 - token.topHoldersPercent, color: '#4CAF50' },
   ];
 
-  const priceImpactData = Array.from({ length: 10 }, (_, i) => ({
+  const priceImpactData: ChartDataPoint[] = Array.from({ length: 10 }, (_, i) => ({
     time: `${i * 1000}`,
     value: Math.random() * 2 + 1 // Price impact 1-3%
   }));
 
-  const holderGrowthData = Array.from({ length: 30 }, (_, i) => ({
+  const holderGrowthData: ChartDataPoint[] = Array.from({ length: 30 }, (_, i) => ({
     time: `Day ${i + 1}`,
     value: 1000 + Math.floor(Math.random() * 100) * (i + 1)
   }));
 
-  const socialEngagementData = Array.from({ length: 30 }, (_, i) => ({
+  const socialEngagementData: ChartDataPoint[] = Array.from({ length: 30 }, (_, i) => ({
     time: `Day ${i + 1}`,
     value: 500 + Math.floor(Math.random() * 50) * (i + 1)
   }));
 
-  const communityGrowthData = Array.from({ length: 30 }, (_, i) => ({
+  const communityGrowthData: ChartDataPoint[] = Array.from({ length: 30 }, (_, i) => ({
     time: `Day ${i + 1}`,
     value: 1000 + Math.floor(Math.random() * 100) * (i + 1)
   }));
 
-  const aiConfidenceData = Array.from({ length: 10 }, (_, i) => ({
+  const aiConfidenceData: ChartDataPoint[] = Array.from({ length: 10 }, (_, i) => ({
     time: `Day ${i + 1}`,
     value: Math.random() * 100
   }));
 
-  const tabs = [
+  const tabs: TabItem[] = [
     { id: 'overview', label: 'Overview', icon: FaChartLine },
     { id: 'market', label: 'Market', icon: FaMoneyBillWave },
     { id: 'holders', label: 'Holders', icon: FaUsers },
@@ -262,7 +262,7 @@ const TokenDetail = () => {
         </div>
         <div className="card p-4">
           <div className="text-sm text-gray-400">Top 10</div>
-          <div className="text-lg font-medium text-[#88D693]">{token.top10HoldersPercent}%</div>
+          <div className="text-lg font-medium text-[#88D693]">{token.topHoldersPercent}%</div>
           <div className="text-xs text-gray-400">Concentration</div>
         </div>
         <div className="card p-4">
@@ -378,7 +378,7 @@ const TokenDetail = () => {
                   <div>
                     <h3 className="text-sm font-medium mb-2">Price Impact Analysis</h3>
                     <div className="bg-[#1A1A1A] p-4 rounded-lg">
-                      <LineChart data={priceImpactData} />
+                      <LineChart data={priceImpactData} color="#88D693" />
                     </div>
                     <div className="mt-2 text-sm text-gray-400">
                       Shows estimated price impact at different trade sizes
@@ -604,7 +604,7 @@ const TokenDetail = () => {
                   <div>
                     <h3 className="text-sm font-medium mb-2">Price Impact Analysis</h3>
                     <div className="bg-[#1A1A1A] p-4 rounded-lg">
-                      <LineChart data={priceImpactData} />
+                      <LineChart data={priceImpactData} color="#88D693" />
                     </div>
                     <div className="mt-2 text-sm text-gray-400">
                       Shows estimated price impact at different trade sizes
@@ -956,7 +956,7 @@ const TokenDetail = () => {
                 
                 <div>
                   <div className="text-sm text-gray-400">Top 10 Holders</div>
-                  <div className="text-xl font-medium">{token.top10HoldersPercent}%</div>
+                  <div className="text-xl font-medium">{token.topHoldersPercent}%</div>
                   <div className="text-sm text-gray-400">of total supply</div>
                 </div>
 
@@ -1194,7 +1194,7 @@ const TokenDetail = () => {
                 </div>
                 <div className="flex items-center">
                   <span className="text-sm text-gray-400">Top 10:</span>
-                  <span className="text-sm text-[#88D693] ml-1">{token.top10HoldersPercent}% ✓</span>
+                  <span className="text-sm text-[#88D693] ml-1">{token.topHoldersPercent}% ✓</span>
                 </div>
               </div>
 

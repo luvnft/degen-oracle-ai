@@ -14,6 +14,11 @@ export interface Token {
   change1h: number;
   topHoldersPercent: number;
   devActivity: 'hold' | 'add' | 'sell';
+  isWatchlisted?: boolean;
+  priceChange5m?: number;
+  priceChange1m?: number;
+  priceChange1h?: number;
+  priceChange24h?: number;
 }
 
 export interface ScanParams {
@@ -52,4 +57,30 @@ export interface TokenDetailInfo extends Token {
   totalSupply: number;
   circulatingSupply: number;
   topHoldersPercent: number;
+}
+
+export interface ChartDataPoint {
+  time: string;
+  value: number;
+}
+
+export interface PieChartDataPoint {
+  name: string;
+  value: number;
+  color: string;
+}
+
+export interface TabItem {
+  id: string;
+  label: string;
+  icon: React.ComponentType<{ className?: string; size?: number }>;
+}
+
+export interface AlertSettings {
+  priceChange: boolean;
+  priceChangeThreshold: number;
+  volumeChange: boolean;
+  volumeChangeThreshold: number;
+  holdersChange: boolean;
+  holdersChangeThreshold: number;
 } 

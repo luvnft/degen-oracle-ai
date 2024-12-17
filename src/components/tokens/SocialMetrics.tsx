@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatNumber, formatPercent } from '@/utils/format';
+import { formatNumber, formatPercent } from '../../utils/format';
 
 interface SocialMetricsProps {
   metrics: {

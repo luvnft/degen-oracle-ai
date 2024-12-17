@@ -7,6 +7,50 @@ import { Disclosure } from '@headlessui/react';
 import { Switch } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
+interface AlertSettings {
+  enabled: boolean;
+  telegram: {
+    priceChange: number;
+    volumeSpike: number;
+    holdersChange: number;
+    socialEngagement: number;
+  };
+}
+
+const initialAlertSettings: AlertSettings = {
+  enabled: false,
+  telegram: {
+    priceChange: 10,
+    volumeSpike: 100,
+    holdersChange: 20,
+    socialEngagement: 50
+  }
+};
+
+interface FilterSettings {
+  minPrice: string;
+  maxPrice: string;
+  minVolume: string;
+  maxVolume: string;
+  minPerformance1h: string;
+  maxPerformance1h: string;
+  minPerformance24h: string;
+  maxPerformance24h: string;
+  riskLevel: string;
+}
+
+const initialFilters: FilterSettings = {
+  minPrice: '',
+  maxPrice: '',
+  minVolume: '',
+  maxVolume: '',
+  minPerformance1h: '',
+  maxPerformance1h: '',
+  minPerformance24h: '',
+  maxPerformance24h: '',
+  riskLevel: ''
+};
+
 export default function Watchlist() {
   const { tokens, loading, error } = useTokenStore();
   const [searchQuery, setSearchQuery] = useState('');

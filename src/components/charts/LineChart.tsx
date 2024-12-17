@@ -11,6 +11,7 @@ import {
   Legend,
   Filler
 } from 'chart.js';
+import { ChartDataPoint } from '../../types';
 
 ChartJS.register(
   CategoryScale,
@@ -24,11 +25,12 @@ ChartJS.register(
 );
 
 interface LineChartProps {
-  data: { time: string; value: number }[];
-  color?: string;
+  data: ChartDataPoint[];
+  color: string;
+  title?: string;
 }
 
-const LineChart: React.FC<LineChartProps> = ({ data, color = '#88D693' }) => {
+const LineChart: React.FC<LineChartProps> = ({ data, color, title }) => {
   const chartData = {
     labels: data.map(d => d.time),
     datasets: [

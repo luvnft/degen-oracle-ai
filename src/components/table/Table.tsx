@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface Column<T> {
-  key: string;
+  key: keyof T;
   title: string;
   align?: 'left' | 'center' | 'right';
   render?: (item: T) => React.ReactNode;
@@ -33,6 +33,17 @@ const Table = <T extends { id?: string | number }>({
     }
   };
 
+  const renderCellContent = (item: T, column: Column<T>): React.ReactNode => {
+    if (column.render) {
+      return column.render(item);
+    }
+    const value = item[column.key];
+    if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
+      return value;
+    }
+    return String(value);
+  };
+
   return (
     <div className="bg-[#111111] rounded-lg border border-[#333333] overflow-hidden">
       <div className="overflow-x-auto">
@@ -41,7 +52,7 @@ const Table = <T extends { id?: string | number }>({
             <tr className="border-b border-[#333333]">
               {columns.map((column) => (
                 <th
-                  key={column.key}
+                  key={String(column.key)}
                   className={`p-4 text-sm font-semibold ${getAlignClass(column.align)}`}
                 >
                   {column.title}
@@ -74,13 +85,10 @@ const Table = <T extends { id?: string | number }>({
                 >
                   {columns.map((column) => (
                     <td
-                      key={column.key}
+                      key={String(column.key)}
                       className={`p-4 ${getAlignClass(column.align)}`}
                     >
-                      {column.render
-                        ? column.render(item)
-                        // @ts-ignore
-                        : item[column.key]}
+                      {renderCellContent(item, column)}
                     </td>
                   ))}
                 </tr>

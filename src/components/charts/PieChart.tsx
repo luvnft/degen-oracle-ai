@@ -1,12 +1,9 @@
 import React from 'react';
 import { PieChart as RechartsChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
+import { PieChartDataPoint } from '../../types';
 
 interface PieChartProps {
-  data: {
-    name: string;
-    value: number;
-    color: string;
-  }[];
+  data: PieChartDataPoint[];
 }
 
 export const PieChart = ({ data }: PieChartProps) => {
