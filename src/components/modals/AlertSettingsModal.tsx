@@ -30,6 +30,7 @@ const AlertSettingsModal = ({ isOpen, onClose, settings, onSave }: AlertSettings
 
         {/* Content */}
         <div className="p-6 space-y-6">
+          {/* Alert Types */}
           <div className="space-y-4">
             <div>
               <div className="flex items-center justify-between mb-4">
@@ -38,15 +39,15 @@ const AlertSettingsModal = ({ isOpen, onClose, settings, onSave }: AlertSettings
                 </label>
                 <input
                   type="checkbox"
-                  checked={localSettings.priceChange}
+                  checked={localSettings.enablePriceAlerts}
                   onChange={(e) => setLocalSettings(prev => ({
                     ...prev,
-                    priceChange: e.target.checked
+                    enablePriceAlerts: e.target.checked
                   }))}
                   className="form-checkbox h-4 w-4 text-[#88D693] rounded border-[#333333] bg-black focus:ring-[#88D693]"
                 />
               </div>
-              {localSettings.priceChange && (
+              {localSettings.enablePriceAlerts && (
                 <div>
                   <label className="block text-sm text-gray-400 mb-2">
                     Price Change Threshold (%)
@@ -58,13 +59,7 @@ const AlertSettingsModal = ({ isOpen, onClose, settings, onSave }: AlertSettings
                       ...prev,
                       priceChangeThreshold: Number(e.target.value)
                     }))}
-                    className="
-                      w-full bg-black rounded-xl px-4 py-2
-                      border border-[#333333]
-                      text-white placeholder-gray-500
-                      focus:outline-none focus:border-[#88D693]
-                      transition-colors duration-200
-                    "
+                    className="w-full bg-black rounded-xl px-4 py-2 border border-[#333333] text-white placeholder-gray-500 focus:outline-none focus:border-[#88D693] transition-colors duration-200"
                     placeholder="10"
                   />
                 </div>
@@ -78,15 +73,15 @@ const AlertSettingsModal = ({ isOpen, onClose, settings, onSave }: AlertSettings
                 </label>
                 <input
                   type="checkbox"
-                  checked={localSettings.volumeChange}
+                  checked={localSettings.enableVolumeAlerts}
                   onChange={(e) => setLocalSettings(prev => ({
                     ...prev,
-                    volumeChange: e.target.checked
+                    enableVolumeAlerts: e.target.checked
                   }))}
                   className="form-checkbox h-4 w-4 text-[#88D693] rounded border-[#333333] bg-black focus:ring-[#88D693]"
                 />
               </div>
-              {localSettings.volumeChange && (
+              {localSettings.enableVolumeAlerts && (
                 <div>
                   <label className="block text-sm text-gray-400 mb-2">
                     Volume Change Threshold (%)
@@ -98,13 +93,7 @@ const AlertSettingsModal = ({ isOpen, onClose, settings, onSave }: AlertSettings
                       ...prev,
                       volumeChangeThreshold: Number(e.target.value)
                     }))}
-                    className="
-                      w-full bg-black rounded-xl px-4 py-2
-                      border border-[#333333]
-                      text-white placeholder-gray-500
-                      focus:outline-none focus:border-[#88D693]
-                      transition-colors duration-200
-                    "
+                    className="w-full bg-black rounded-xl px-4 py-2 border border-[#333333] text-white placeholder-gray-500 focus:outline-none focus:border-[#88D693] transition-colors duration-200"
                     placeholder="100"
                   />
                 </div>
@@ -118,15 +107,15 @@ const AlertSettingsModal = ({ isOpen, onClose, settings, onSave }: AlertSettings
                 </label>
                 <input
                   type="checkbox"
-                  checked={localSettings.holdersChange}
+                  checked={localSettings.enableHoldersAlerts}
                   onChange={(e) => setLocalSettings(prev => ({
                     ...prev,
-                    holdersChange: e.target.checked
+                    enableHoldersAlerts: e.target.checked
                   }))}
                   className="form-checkbox h-4 w-4 text-[#88D693] rounded border-[#333333] bg-black focus:ring-[#88D693]"
                 />
               </div>
-              {localSettings.holdersChange && (
+              {localSettings.enableHoldersAlerts && (
                 <div>
                   <label className="block text-sm text-gray-400 mb-2">
                     Holders Change Threshold (%)
@@ -138,17 +127,85 @@ const AlertSettingsModal = ({ isOpen, onClose, settings, onSave }: AlertSettings
                       ...prev,
                       holdersChangeThreshold: Number(e.target.value)
                     }))}
-                    className="
-                      w-full bg-black rounded-xl px-4 py-2
-                      border border-[#333333]
-                      text-white placeholder-gray-500
-                      focus:outline-none focus:border-[#88D693]
-                      transition-colors duration-200
-                    "
+                    className="w-full bg-black rounded-xl px-4 py-2 border border-[#333333] text-white placeholder-gray-500 focus:outline-none focus:border-[#88D693] transition-colors duration-200"
                     placeholder="20"
                   />
                 </div>
               )}
+            </div>
+          </div>
+
+          {/* Alert Limits */}
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm text-gray-400 mb-2">
+                Maximum Alerts Per Day
+              </label>
+              <input
+                type="number"
+                value={localSettings.maxAlertsPerDay}
+                onChange={(e) => setLocalSettings(prev => ({
+                  ...prev,
+                  maxAlertsPerDay: Number(e.target.value)
+                }))}
+                className="w-full bg-black rounded-xl px-4 py-2 border border-[#333333] text-white placeholder-gray-500 focus:outline-none focus:border-[#88D693] transition-colors duration-200"
+                placeholder="50"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm text-gray-400 mb-2">
+                Alert Cooldown (minutes)
+              </label>
+              <input
+                type="number"
+                value={localSettings.alertCooldownMinutes}
+                onChange={(e) => setLocalSettings(prev => ({
+                  ...prev,
+                  alertCooldownMinutes: Number(e.target.value)
+                }))}
+                className="w-full bg-black rounded-xl px-4 py-2 border border-[#333333] text-white placeholder-gray-500 focus:outline-none focus:border-[#88D693] transition-colors duration-200"
+                placeholder="30"
+              />
+            </div>
+          </div>
+
+          {/* Notification Channels */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-medium text-gray-400">Notification Channels</h3>
+            <div className="flex items-center justify-between">
+              <label className="text-sm text-gray-400">
+                Telegram
+              </label>
+              <input
+                type="checkbox"
+                checked={localSettings.notificationChannels.telegram}
+                onChange={(e) => setLocalSettings(prev => ({
+                  ...prev,
+                  notificationChannels: {
+                    ...prev.notificationChannels,
+                    telegram: e.target.checked
+                  }
+                }))}
+                className="form-checkbox h-4 w-4 text-[#88D693] rounded border-[#333333] bg-black focus:ring-[#88D693]"
+              />
+            </div>
+            <div className="flex items-center justify-between">
+              <label className="text-sm text-gray-400">
+                Email
+              </label>
+              <input
+                type="checkbox"
+                checked={localSettings.notificationChannels.email}
+                onChange={(e) => setLocalSettings(prev => ({
+                  ...prev,
+                  notificationChannels: {
+                    ...prev.notificationChannels,
+                    email: e.target.checked
+                  }
+                }))}
+                className="form-checkbox h-4 w-4 text-[#88D693] rounded border-[#333333] bg-black focus:ring-[#88D693]"
+              />
             </div>
           </div>
         </div>
@@ -163,12 +220,7 @@ const AlertSettingsModal = ({ isOpen, onClose, settings, onSave }: AlertSettings
           </button>
           <button
             onClick={() => onSave(localSettings)}
-            className="
-              bg-[#88D693] hover:bg-[#88D693]/90
-              text-black font-medium
-              px-4 py-2 rounded-lg
-              transition-colors duration-200
-            "
+            className="bg-[#88D693] hover:bg-[#88D693]/90 text-black font-medium px-4 py-2 rounded-lg transition-colors duration-200"
           >
             Save Changes
           </button>

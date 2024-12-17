@@ -13,12 +13,14 @@ export interface Token {
   change5m: number;
   change1h: number;
   topHoldersPercent: number;
-  devActivity: 'hold' | 'add' | 'sell';
+  devActivity: {
+    action: 'hold' | 'add' | 'sell';
+  };
   isWatchlisted?: boolean;
   priceChange5m?: number;
   priceChange1m?: number;
   priceChange1h?: number;
-  priceChange24h?: number;
+  priceChange24h: number;
   top10HoldersPercent: number;
 }
 
@@ -52,12 +54,9 @@ export interface TokenDetailInfo extends Token {
   website?: string;
   tags?: string[];
   currentPrice: number;
-  priceChange1h: number;
-  priceChange24h: number;
   hourlyVolume: number;
   totalSupply: number;
   circulatingSupply: number;
-  topHoldersPercent: number;
 }
 
 export interface ChartDataPoint {
@@ -78,10 +77,16 @@ export interface TabItem {
 }
 
 export interface AlertSettings {
-  priceChange: boolean;
   priceChangeThreshold: number;
-  volumeChange: boolean;
   volumeChangeThreshold: number;
-  holdersChange: boolean;
   holdersChangeThreshold: number;
+  maxAlertsPerDay: number;
+  alertCooldownMinutes: number;
+  enablePriceAlerts: boolean;
+  enableVolumeAlerts: boolean;
+  enableHoldersAlerts: boolean;
+  notificationChannels: {
+    telegram: boolean;
+    email: boolean;
+  };
 } 

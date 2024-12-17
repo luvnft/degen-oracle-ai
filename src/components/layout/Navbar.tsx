@@ -1,132 +1,89 @@
 import React, { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { 
-  ChartBarIcon, 
-  MagnifyingGlassIcon, 
-  StarIcon,
-  Cog6ToothIcon,
-} from '@heroicons/react/24/outline'
+import { Link, useLocation } from 'react-router-dom';
+import { BellIcon } from '@heroicons/react/24/outline';
 import AlertSettingsModal from '../modals/AlertSettingsModal';
+import { AlertSettings } from '../../types';
 
-const navigation = [
-  { name: 'Trends', href: '/trends', icon: ChartBarIcon },
-  { name: 'Discovery', href: '/discovery', icon: MagnifyingGlassIcon },
-  { name: 'Watchlist', href: '/watchlist', icon: StarIcon },
-]
-
-const Navbar = () => {
-  const location = useLocation()
-  const navigate = useNavigate()
-  const [searchValue, setSearchValue] = useState('')
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false)
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (searchValue.trim()) {
-      navigate(`/token/${searchValue.trim()}`);
-      setSearchValue('')
-    }
+const initialAlertSettings: AlertSettings = {
+  priceChangeThreshold: 10,
+  volumeChangeThreshold: 100,
+  holdersChangeThreshold: 20,
+  maxAlertsPerDay: 50,
+  alertCooldownMinutes: 30,
+  enablePriceAlerts: true,
+  enableVolumeAlerts: true,
+  enableHoldersAlerts: true,
+  notificationChannels: {
+    telegram: true,
+    email: false
   }
+};
+
+const Navbar: React.FC = () => {
+  const location = useLocation();
+  const [isAlertModalOpen, setIsAlertModalOpen] = useState(false);
+  const [alertSettings, setAlertSettings] = useState<AlertSettings>(initialAlertSettings);
+
+  const handleSaveAlertSettings = (newSettings: AlertSettings) => {
+    setAlertSettings(newSettings);
+    setIsAlertModalOpen(false);
+  };
+
+  const navItems = [
+    { path: '/', label: 'Trends' },
+    { path: '/discovery', label: 'Discovery' },
+    { path: '/watchlist', label: 'Watchlist' }
+  ];
 
   return (
     <nav className="bg-[#111111] border-b border-[#333333]">
-      <div className="px-6">
+      <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center">
-            <Link to="/trends" className="flex items-center">
-              <ChartBarIcon className="h-8 w-8 text-[#88D693]" />
-              <span className="ml-2 text-white font-bold text-lg">DEGEN ORACLE</span>
+          <div className="flex-shrink-0">
+            <Link to="/" className="text-[#00FF00] font-bold text-xl">
+              DEGEN ORACLE
             </Link>
           </div>
 
-          {/* Quick Search */}
-          <div className="flex-1 max-w-lg mx-12">
-            <form onSubmit={handleSearch}>
-              <div className="relative">
-                <input
-                  type="text"
-                  value={searchValue}
-                  onChange={(e) => setSearchValue(e.target.value)}
-                  placeholder="Search by contract address..."
-                  className="
-                    w-full bg-black rounded-xl px-4 py-2
-                    border border-[#333333]
-                    text-white placeholder-gray-500
-                    focus:outline-none focus:border-[#88D693]
-                    transition-colors duration-200
-                  "
-                />
-                <button
-                  type="submit"
-                  className="
-                    absolute right-2 top-1/2 -translate-y-1/2
-                    p-1.5 rounded-lg
-                    text-gray-400 hover:text-white
-                    transition-colors duration-200
-                  "
-                >
-                  <MagnifyingGlassIcon className="w-4 h-4" />
-                </button>
-              </div>
-            </form>
+          {/* Navigation Links */}
+          <div className="flex items-center space-x-4">
+            {navItems.map(({ path, label }) => (
+              <Link
+                key={path}
+                to={path}
+                className={`px-3 py-2 rounded-md text-sm font-medium ${
+                  location.pathname === path
+                    ? 'text-[#00FF00] bg-[#1A1A1A]'
+                    : 'text-gray-300 hover:text-[#00FF00] hover:bg-[#1A1A1A]'
+                }`}
+              >
+                {label}
+              </Link>
+            ))}
           </div>
 
-          {/* Navigation Links & Settings */}
+          {/* Alert Settings */}
           <div className="flex items-center">
-            {/* Navigation Links */}
-            <div className="flex items-center space-x-4 mr-4">
-              {navigation.map((item) => {
-                const Icon = item.icon
-                const isActive = location.pathname === item.href
-                return (
-                  <Link
-                    key={item.name}
-                    to={item.href}
-                    className={`flex items-center px-3 py-2 rounded-md text-sm font-medium ${
-                      isActive
-                        ? 'bg-[#1A1A1A] text-white'
-                        : 'text-gray-300 hover:bg-[#1A1A1A] hover:text-white'
-                    }`}
-                  >
-                    <Icon className="h-5 w-5 mr-2" />
-                    {item.name}
-                  </Link>
-                )
-              })}
-            </div>
-
-            {/* Settings Button */}
-            <div className="pl-4 border-l border-[#333333]">
-              <button
-                onClick={() => setIsSettingsOpen(true)}
-                className="
-                  p-2 rounded-lg
-                  text-gray-300 hover:text-white
-                  hover:bg-[#1A1A1A]
-                  transition-colors duration-200
-                "
-                title="Alert Settings"
-              >
-                <Cog6ToothIcon className="h-5 w-5" />
-              </button>
-            </div>
+            <button
+              onClick={() => setIsAlertModalOpen(true)}
+              className="p-2 rounded-md text-gray-300 hover:text-[#00FF00] hover:bg-[#1A1A1A]"
+            >
+              <BellIcon className="h-6 w-6" />
+            </button>
           </div>
         </div>
       </div>
 
       {/* Alert Settings Modal */}
       <AlertSettingsModal
-        isOpen={isSettingsOpen}
-        onClose={() => setIsSettingsOpen(false)}
-        onSave={(settings) => {
-          // Handle save settings
-          console.log('Save settings:', settings);
-          setIsSettingsOpen(false);
-        }}
+        isOpen={isAlertModalOpen}
+        onClose={() => setIsAlertModalOpen(false)}
+        settings={alertSettings}
+        onSave={handleSaveAlertSettings}
       />
     </nav>
-  )
-}
+  );
+};
 
 export default Navbar;
