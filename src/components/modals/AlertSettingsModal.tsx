@@ -1,24 +1,16 @@
 import React, { useState } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
-
-interface AlertSettings {
-  priceChange: number;
-  volumeChange: number;
-  holdersChange: number;
-}
+import { AlertSettings } from '../../types';
 
 interface AlertSettingsModalProps {
   isOpen: boolean;
   onClose: () => void;
+  settings: AlertSettings;
   onSave: (settings: AlertSettings) => void;
 }
 
-const AlertSettingsModal = ({ isOpen, onClose, onSave }: AlertSettingsModalProps) => {
-  const [settings, setSettings] = useState<AlertSettings>({
-    priceChange: 10,
-    volumeChange: 100,
-    holdersChange: 20,
-  });
+const AlertSettingsModal = ({ isOpen, onClose, settings, onSave }: AlertSettingsModalProps) => {
+  const [localSettings, setLocalSettings] = useState<AlertSettings>(settings);
 
   if (!isOpen) return null;
 
@@ -40,67 +32,123 @@ const AlertSettingsModal = ({ isOpen, onClose, onSave }: AlertSettingsModalProps
         <div className="p-6 space-y-6">
           <div className="space-y-4">
             <div>
-              <label className="block text-sm text-gray-400 mb-2">
-                Price Change Alert (%)
-              </label>
-              <input
-                type="number"
-                value={settings.priceChange}
-                onChange={(e) => setSettings(prev => ({
-                  ...prev,
-                  priceChange: Number(e.target.value)
-                }))}
-                className="
-                  w-full bg-black rounded-xl px-4 py-2
-                  border border-[#333333]
-                  text-white placeholder-gray-500
-                  focus:outline-none focus:border-[#88D693]
-                  transition-colors duration-200
-                "
-                placeholder="10"
-              />
+              <div className="flex items-center justify-between mb-4">
+                <label className="text-sm text-gray-400">
+                  Price Change Alerts
+                </label>
+                <input
+                  type="checkbox"
+                  checked={localSettings.priceChange}
+                  onChange={(e) => setLocalSettings(prev => ({
+                    ...prev,
+                    priceChange: e.target.checked
+                  }))}
+                  className="form-checkbox h-4 w-4 text-[#88D693] rounded border-[#333333] bg-black focus:ring-[#88D693]"
+                />
+              </div>
+              {localSettings.priceChange && (
+                <div>
+                  <label className="block text-sm text-gray-400 mb-2">
+                    Price Change Threshold (%)
+                  </label>
+                  <input
+                    type="number"
+                    value={localSettings.priceChangeThreshold}
+                    onChange={(e) => setLocalSettings(prev => ({
+                      ...prev,
+                      priceChangeThreshold: Number(e.target.value)
+                    }))}
+                    className="
+                      w-full bg-black rounded-xl px-4 py-2
+                      border border-[#333333]
+                      text-white placeholder-gray-500
+                      focus:outline-none focus:border-[#88D693]
+                      transition-colors duration-200
+                    "
+                    placeholder="10"
+                  />
+                </div>
+              )}
             </div>
+
             <div>
-              <label className="block text-sm text-gray-400 mb-2">
-                Volume Change Alert (%)
-              </label>
-              <input
-                type="number"
-                value={settings.volumeChange}
-                onChange={(e) => setSettings(prev => ({
-                  ...prev,
-                  volumeChange: Number(e.target.value)
-                }))}
-                className="
-                  w-full bg-black rounded-xl px-4 py-2
-                  border border-[#333333]
-                  text-white placeholder-gray-500
-                  focus:outline-none focus:border-[#88D693]
-                  transition-colors duration-200
-                "
-                placeholder="100"
-              />
+              <div className="flex items-center justify-between mb-4">
+                <label className="text-sm text-gray-400">
+                  Volume Change Alerts
+                </label>
+                <input
+                  type="checkbox"
+                  checked={localSettings.volumeChange}
+                  onChange={(e) => setLocalSettings(prev => ({
+                    ...prev,
+                    volumeChange: e.target.checked
+                  }))}
+                  className="form-checkbox h-4 w-4 text-[#88D693] rounded border-[#333333] bg-black focus:ring-[#88D693]"
+                />
+              </div>
+              {localSettings.volumeChange && (
+                <div>
+                  <label className="block text-sm text-gray-400 mb-2">
+                    Volume Change Threshold (%)
+                  </label>
+                  <input
+                    type="number"
+                    value={localSettings.volumeChangeThreshold}
+                    onChange={(e) => setLocalSettings(prev => ({
+                      ...prev,
+                      volumeChangeThreshold: Number(e.target.value)
+                    }))}
+                    className="
+                      w-full bg-black rounded-xl px-4 py-2
+                      border border-[#333333]
+                      text-white placeholder-gray-500
+                      focus:outline-none focus:border-[#88D693]
+                      transition-colors duration-200
+                    "
+                    placeholder="100"
+                  />
+                </div>
+              )}
             </div>
+
             <div>
-              <label className="block text-sm text-gray-400 mb-2">
-                Holders Change Alert (%)
-              </label>
-              <input
-                type="number"
-                value={settings.holdersChange}
-                onChange={(e) => setSettings(prev => ({
-                  ...prev,
-                  holdersChange: Number(e.target.value)
-                }))}
-                className="
-                  w-full bg-black rounded-xl px-4 py-2
-                  border border-[#333333]
-                  text-white placeholder-gray-500
-                  focus:outline-none focus:border-[#88D693]
-                  transition-colors duration-200
-                "
-                placeholder="20"
-              />
+              <div className="flex items-center justify-between mb-4">
+                <label className="text-sm text-gray-400">
+                  Holders Change Alerts
+                </label>
+                <input
+                  type="checkbox"
+                  checked={localSettings.holdersChange}
+                  onChange={(e) => setLocalSettings(prev => ({
+                    ...prev,
+                    holdersChange: e.target.checked
+                  }))}
+                  className="form-checkbox h-4 w-4 text-[#88D693] rounded border-[#333333] bg-black focus:ring-[#88D693]"
+                />
+              </div>
+              {localSettings.holdersChange && (
+                <div>
+                  <label className="block text-sm text-gray-400 mb-2">
+                    Holders Change Threshold (%)
+                  </label>
+                  <input
+                    type="number"
+                    value={localSettings.holdersChangeThreshold}
+                    onChange={(e) => setLocalSettings(prev => ({
+                      ...prev,
+                      holdersChangeThreshold: Number(e.target.value)
+                    }))}
+                    className="
+                      w-full bg-black rounded-xl px-4 py-2
+                      border border-[#333333]
+                      text-white placeholder-gray-500
+                      focus:outline-none focus:border-[#88D693]
+                      transition-colors duration-200
+                    "
+                    placeholder="20"
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -114,7 +162,7 @@ const AlertSettingsModal = ({ isOpen, onClose, onSave }: AlertSettingsModalProps
             Cancel
           </button>
           <button
-            onClick={() => onSave(settings)}
+            onClick={() => onSave(localSettings)}
             className="
               bg-[#88D693] hover:bg-[#88D693]/90
               text-black font-medium

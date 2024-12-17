@@ -16,7 +16,9 @@ export const mockTokens: TokenDetailInfo[] = [
     priceChange24h: 15.2,
     topHoldersPercent: 45,
     tags: ['AI', 'Oracle'],
-    devActivity: 'hold',
+    devActivity: {
+      action: 'hold'
+    },
     twitter: 'https://twitter.com/aioracle',
     telegram: 'https://t.me/aioracle',
     website: 'https://aioracle.io',
@@ -63,7 +65,9 @@ export const mockTokens: TokenDetailInfo[] = [
     priceChange1m: -0.8,
     topHoldersPercent: 38,
     tags: ['AI', 'Agent'],
-    devActivity: 'add',
+    devActivity: {
+      action: 'add'
+    },
     twitter: 'https://twitter.com/agentnetwork',
     telegram: 'https://t.me/agentnetwork',
     website: 'https://agentnetwork.ai',
@@ -111,7 +115,9 @@ export const mockTokens: TokenDetailInfo[] = [
     priceChange1m: 2.1,
     topHoldersPercent: 42,
     tags: ['AI', 'DeepLearning'],
-    devActivity: 'add',
+    devActivity: {
+      action: 'add'
+    },
     twitter: 'https://twitter.com/deepmindtoken',
     telegram: 'https://t.me/deepmindtoken',
     website: 'https://deepmind.token',
@@ -159,7 +165,9 @@ export const mockTokens: TokenDetailInfo[] = [
     priceChange1m: -0.3,
     topHoldersPercent: 35,
     tags: ['AI', 'Neural'],
-    devActivity: 'hold',
+    devActivity: {
+      action: 'hold'
+    },
     twitter: 'https://twitter.com/neuralnet',
     telegram: 'https://t.me/neuralnet',
     website: 'https://neural.net',
@@ -207,7 +215,9 @@ export const mockTokens: TokenDetailInfo[] = [
     priceChange1m: 3.1,
     topHoldersPercent: 48,
     tags: ['AI', 'GPT'],
-    devActivity: 'add',
+    devActivity: {
+      action: 'add'
+    },
     twitter: 'https://twitter.com/gpttoken',
     telegram: 'https://t.me/gpttoken',
     website: 'https://gpt.token',
@@ -255,7 +265,9 @@ export const mockTokens: TokenDetailInfo[] = [
     priceChange1m: -1.5,
     topHoldersPercent: 52,
     tags: ['AI', 'Robotics'],
-    devActivity: 'sell',
+    devActivity: {
+      action: 'sell'
+    },
     twitter: 'https://twitter.com/robotai',
     telegram: 'https://t.me/robotai',
     website: 'https://robot.ai',
@@ -303,7 +315,9 @@ export const mockTokens: TokenDetailInfo[] = [
     priceChange1m: 1.9,
     topHoldersPercent: 41,
     tags: ['AI', 'ML'],
-    devActivity: 'hold',
+    devActivity: {
+      action: 'hold'
+    },
     twitter: 'https://twitter.com/mltoken',
     telegram: 'https://t.me/mltoken',
     website: 'https://ml.token',
@@ -351,7 +365,9 @@ export const mockTokens: TokenDetailInfo[] = [
     priceChange1m: -0.9,
     topHoldersPercent: 39,
     tags: ['AI', 'Assistant'],
-    devActivity: 'hold',
+    devActivity: {
+      action: 'hold'
+    },
     twitter: 'https://twitter.com/aiassist',
     telegram: 'https://t.me/aiassist',
     website: 'https://ai.assist',
@@ -399,7 +415,9 @@ export const mockTokens: TokenDetailInfo[] = [
     priceChange1m: 2.2,
     topHoldersPercent: 44,
     tags: ['AI', 'Agent', 'Neural'],
-    devActivity: 'add',
+    devActivity: {
+      action: 'add'
+    },
     twitter: 'https://twitter.com/neuralagent',
     telegram: 'https://t.me/neuralagent',
     website: 'https://neural.agent',
@@ -447,7 +465,9 @@ export const mockTokens: TokenDetailInfo[] = [
     priceChange1m: 1.2,
     topHoldersPercent: 47,
     tags: ['AI', 'Network'],
-    devActivity: 'hold',
+    devActivity: {
+      action: 'hold'
+    },
     twitter: 'https://twitter.com/ainetwork',
     telegram: 'https://t.me/ainetwork',
     website: 'https://ai.network',

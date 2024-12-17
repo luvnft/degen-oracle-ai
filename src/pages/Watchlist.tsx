@@ -4,27 +4,17 @@ import { useTokenStore } from '../store/tokenStore';
 import { MagnifyingGlassIcon, FunnelIcon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Input } from '../components/form/Input';
 import Switch from '../components/form/Switch';
-import { AlertSettingsModal } from '../components/modals/AlertSettingsModal';
+import AlertSettingsModal from '../components/modals/AlertSettingsModal';
 import { FilterModal } from '../components/modals/FilterModal';
-
-export interface AlertSettings {
-  enabled: boolean;
-  telegram: {
-    priceChange: number;
-    volumeSpike: number;
-    holdersChange: number;
-    socialEngagement: number;
-  };
-}
+import { AlertSettings, TokenDetailInfo } from '../types';
 
 const initialAlertSettings: AlertSettings = {
-  enabled: false,
-  telegram: {
-    priceChange: 10,
-    volumeSpike: 100,
-    holdersChange: 20,
-    socialEngagement: 50
-  }
+  priceChange: true,
+  priceChangeThreshold: 10,
+  volumeChange: true,
+  volumeChangeThreshold: 100,
+  holdersChange: true,
+  holdersChangeThreshold: 20
 };
 
 interface FilterSettings {
@@ -121,7 +111,7 @@ export default function Watchlist() {
       {/* Token Table */}
       <div className="bg-[#111111] rounded-lg">
         <TokenTable
-          data={tokens?.filter(token => token.isWatchlisted) ?? []}
+          data={(tokens?.filter(token => token.isWatchlisted) ?? []) as TokenDetailInfo[]}
           loading={loading}
           error={error}
         />
@@ -132,7 +122,7 @@ export default function Watchlist() {
         isOpen={isAlertSettingsOpen}
         onClose={() => setIsAlertSettingsOpen(false)}
         settings={alertSettings}
-        onSave={(newSettings) => {
+        onSave={(newSettings: AlertSettings) => {
           setAlertSettings(newSettings);
           setIsAlertSettingsOpen(false);
         }}

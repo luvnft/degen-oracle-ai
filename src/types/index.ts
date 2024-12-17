@@ -19,6 +19,7 @@ export interface Token {
   priceChange1m?: number;
   priceChange1h?: number;
   priceChange24h?: number;
+  top10HoldersPercent: number;
 }
 
 export interface ScanParams {
