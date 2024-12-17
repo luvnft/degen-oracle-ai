@@ -65,6 +65,7 @@ export default function Trends() {
       priceChange1h: -2.50,
       priceChange5m: -1.20,
       priceChange1m: -0.80,
+      priceChange24h: -3.50,
       top10HoldersPercent: 38,
       devActivity: { action: 'ADD' },
       twitter: 'https://twitter.com/degenai',
@@ -72,6 +73,10 @@ export default function Trends() {
       website: 'https://degenai.io',
       logo: '/path/to/logo.png',
       isWatchlisted: false,
+      totalSupply: 1000000000,
+      circulatingSupply: 750000000,
+      transactions1h: 45,
+      volume1h: 35000,
     },
     {
       name: 'Neural Net',
@@ -88,6 +93,7 @@ export default function Trends() {
       priceChange1h: -1.50,
       priceChange5m: -0.80,
       priceChange1m: -0.30,
+      priceChange24h: -2.20,
       top10HoldersPercent: 35,
       devActivity: { action: 'HOLD' },
       twitter: 'https://twitter.com/neuralnet',
@@ -95,6 +101,10 @@ export default function Trends() {
       website: 'https://neuralnet.io',
       logo: '/path/to/logo.png',
       isWatchlisted: false,
+      totalSupply: 500000000,
+      circulatingSupply: 350000000,
+      transactions1h: 38,
+      volume1h: 45000,
     },
     // ... Add more tokens as needed
   ];
