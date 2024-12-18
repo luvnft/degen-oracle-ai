@@ -93,7 +93,7 @@ export default function Trends() {
             </span>
           </div>
         </div>
-        <TokenTable tokens={tokens} />
+        <TokenTable tokens={tokens as Token[]} />
       </div>
     </div>
   );

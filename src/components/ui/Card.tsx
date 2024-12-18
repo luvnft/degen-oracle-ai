@@ -20,7 +20,6 @@ const Card: React.FC<CardProps> = ({
       className={`
         bg-[#1A1A1A] 
         rounded-lg 
-        border border-[#333333]
         ${!noPadding ? 'p-4 md:p-6' : ''}
         ${hoverable ? 'hover:bg-[#222222] transition-colors cursor-pointer' : ''}
         ${className}

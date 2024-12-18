@@ -25,9 +25,9 @@ export const convertedMockTokens = mockTokens.map((token, index) => ({
   volume1h: `$${formatNumber(token.volume1h)}`,
   price: token.price,
   change: {
-    m1: `${token.priceChange1m > 0 ? '+' : ''}${token.priceChange1m}%`,
-    m5: `${token.priceChange5m > 0 ? '+' : ''}${token.priceChange5m}%`,
-    h1: `${token.priceChange1h > 0 ? '+' : ''}${token.priceChange1h}%`
+    m1: `${(token.priceChange1m ?? 0) > 0 ? '+' : ''}${token.priceChange1m ?? 0}%`,
+    m5: `${(token.priceChange5m ?? 0) > 0 ? '+' : ''}${token.priceChange5m ?? 0}%`,
+    h1: `${(token.priceChange1h ?? 0) > 0 ? '+' : ''}${token.priceChange1h ?? 0}%`
   },
   devAction: token.devActivity.action === 'hold' ? 'HODL' : 
              token.devActivity.action === 'sell' ? 'Sell All' : '--',

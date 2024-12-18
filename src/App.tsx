@@ -5,6 +5,7 @@ import TokenDiscovery from './pages/TokenDiscovery';
 import Trends from './pages/Trends';
 import Watchlist from './pages/Watchlist';
 import TokenDetail from './pages/TokenDetail';
+import Components from './pages/Components';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
             <Route path="/discovery" element={<TokenDiscovery />} />
             <Route path="/watchlist" element={<Watchlist />} />
             <Route path="/token/:address" element={<TokenDetail />} />
+            <Route path="/components" element={<Components />} />
             
             {/* Fallback for unknown routes */}
             <Route path="*" element={<Navigate to="/trends" replace />} />
