@@ -4,12 +4,12 @@ import { TrendOverview } from '../components/trends/TrendOverview';
 import { PieChart } from '../components/charts/PieChart';
 import Select from '../components/form/Select';
 import { TrendCharts } from '../components/trends/TrendCharts';
-import TokenTable from '../components/tokens/TokenTable';
-import { TokenDetailInfo } from '../types';
+import TokenTable, { Token, convertedMockTokens } from '../components/tables/TokenTable';
 
 export default function Trends() {
   const [timeRange, setTimeRange] = useState<'24h' | '7d' | '30d'>('24h');
   const [loading, setLoading] = useState(false);
+  const [tokens, setTokens] = useState(convertedMockTokens);
 
   const metrics = [
     {
@@ -48,110 +48,6 @@ export default function Trends() {
     time: new Date(Date.now() - (30 - i) * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
     value: Math.random() * 1000000 + 500000
   }));
-
-  // Mock data for top tokens
-  const topTokens: TokenDetailInfo[] = [
-    {
-      name: 'DegenAI',
-      symbol: 'DGNAI',
-      address: '0xabcd...ef12',
-      age: '5d',
-      liquidity: 150000,
-      marketCap: 800000,
-      holders: 2200,
-      hourlyVolume: 35000,
-      price: 0.45,
-      currentPrice: 0.45,
-      priceChange1h: -2.50,
-      priceChange5m: -1.20,
-      priceChange1m: -0.80,
-      priceChange24h: -3.50,
-      topHoldersPercent: 38,
-      top10HoldersPercent: 38,
-      devActivity: {
-        action: 'add'
-      },
-      twitter: 'https://twitter.com/degenai',
-      telegram: 'https://t.me/degenai',
-      website: 'https://degenai.io',
-      logo: '/path/to/logo.png',
-      isWatchlisted: false,
-      totalSupply: 1000000000,
-      circulatingSupply: 750000000,
-      transactions1h: 45,
-      volume1h: 35000,
-      change1m: -0.80,
-      change5m: -1.20,
-      change1h: -2.50,
-      fdv: 1500000,
-      liquidityPairs: ['SOL-USDC', 'SOL-USDT'],
-      contractVerified: true,
-      proxyContract: false,
-      lockDuration: 365,
-      socialMetrics: {
-        twitter: {
-          followers: 12500,
-          engagement: 3.2,
-          growth24h: 5.2
-        },
-        telegram: {
-          members: 8200,
-          active: 1500,
-          growth24h: 2.8
-        }
-      }
-    },
-    {
-      name: 'Neural Net',
-      symbol: 'NNET',
-      address: '0x1357...4680',
-      age: '3d',
-      liquidity: 150000,
-      marketCap: 950000,
-      holders: 1200,
-      hourlyVolume: 45000,
-      price: 0.85,
-      currentPrice: 0.85,
-      priceChange1h: -1.50,
-      priceChange5m: -0.80,
-      priceChange1m: -0.30,
-      priceChange24h: -2.20,
-      topHoldersPercent: 35,
-      top10HoldersPercent: 35,
-      devActivity: {
-        action: 'hold'
-      },
-      twitter: 'https://twitter.com/neuralnet',
-      telegram: 'https://t.me/neuralnet',
-      website: 'https://neuralnet.io',
-      logo: '/path/to/logo.png',
-      isWatchlisted: false,
-      totalSupply: 500000000,
-      circulatingSupply: 350000000,
-      transactions1h: 38,
-      volume1h: 45000,
-      change1m: -0.30,
-      change5m: -0.80,
-      change1h: -1.50,
-      fdv: 1500000,
-      liquidityPairs: ['SOL-USDC', 'SOL-USDT'],
-      contractVerified: true,
-      proxyContract: false,
-      lockDuration: 365,
-      socialMetrics: {
-        twitter: {
-          followers: 12500,
-          engagement: 3.2,
-          growth24h: 5.2
-        },
-        telegram: {
-          members: 8200,
-          active: 1500,
-          growth24h: 2.8
-        }
-      }
-    }
-  ];
 
   return (
     <div className="space-y-6">
@@ -197,11 +93,7 @@ export default function Trends() {
             </span>
           </div>
         </div>
-        <TokenTable
-          data={topTokens}
-          loading={loading}
-          error={null}
-        />
+        <TokenTable tokens={tokens} />
       </div>
     </div>
   );

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import TokenTable from '../components/tokens/TokenTable';
+import TokenTable, { Token, convertedMockTokens } from '../components/tables/TokenTable';
 import { useTokenStore } from '../store/tokenStore';
 import { MagnifyingGlassIcon, FunnelIcon } from '@heroicons/react/24/outline';
 import { FilterModal } from '../components/modals/FilterModal';
-import { TokenDetailInfo } from '../types';
 
 interface FilterSettings {
   minPrice: string;
@@ -29,11 +28,21 @@ const initialFilters: FilterSettings = {
   riskLevel: ''
 };
 
+// Remove the old mockWatchlist definition and use filtered convertedMockTokens instead
+const mockWatchlist = convertedMockTokens.filter(token => 
+  ['AI Oracle', 'Agent Network', 'Neural Net'].includes(token.name)
+);
+
 export default function Watchlist() {
   const { tokens, loading, error } = useTokenStore();
   const [searchQuery, setSearchQuery] = useState('');
   const [filters, setFilters] = useState<FilterSettings>(initialFilters);
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+  const [watchlistTokens, setWatchlistTokens] = useState(mockWatchlist);
+
+  const handleRemoveFromWatchlist = (address: string) => {
+    setWatchlistTokens(prev => prev.filter(token => token.address !== address));
+  };
 
   return (
     <div className="space-y-6">
@@ -56,8 +65,6 @@ export default function Watchlist() {
                 placeholder="Search watchlist..."
                 className="
                   w-full bg-black rounded-xl px-4 py-3
-                  border border-[#333333]
-                  text-white placeholder-gray-500
                   focus:outline-none focus:border-[#88D693]
                   transition-colors duration-200
                   pl-10
@@ -80,10 +87,10 @@ export default function Watchlist() {
 
       {/* Token Table */}
       <div className="bg-[#111111] rounded-lg">
-        <TokenTable
-          data={(tokens?.filter(token => token.isWatchlisted) ?? []) as TokenDetailInfo[]}
-          loading={loading}
-          error={error}
+        <TokenTable 
+          tokens={watchlistTokens} 
+          isWatchlist={true}
+          onRemoveFromWatchlist={handleRemoveFromWatchlist}
         />
       </div>
 

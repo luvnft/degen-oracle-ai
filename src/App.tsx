@@ -1,15 +1,14 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { ToastProvider } from './components/shared/Toast/ToastProvider';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/layout/Layout';
-import Trends from './pages/Trends';
+import { ToastProvider } from './components/shared/Toast/ToastProvider';
 import TokenDiscovery from './pages/TokenDiscovery';
+import Trends from './pages/Trends';
 import Watchlist from './pages/Watchlist';
 import TokenDetail from './pages/TokenDetail';
 
 const App = () => {
   return (
-    <Router>
+    <BrowserRouter future={{ v7_startTransition: true }}>
       <ToastProvider>
         <Layout>
           <Routes>
@@ -27,7 +26,7 @@ const App = () => {
           </Routes>
         </Layout>
       </ToastProvider>
-    </Router>
+    </BrowserRouter>
   );
 };
 

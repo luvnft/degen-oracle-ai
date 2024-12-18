@@ -182,11 +182,11 @@ const TokenDetail = () => {
 
       {/* Basic Information */}
       <div className="card">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-4">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between space-y-4 md:space-y-0">
+          <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-4 w-full md:w-auto">
             <img src={token.logo} alt={token.name} className="w-12 h-12 rounded-full" />
             <div>
-              <div className="flex items-center space-x-4">
+              <div className="flex flex-col md:flex-row items-start md:items-center md:space-x-4">
                 <h1 className="text-2xl font-bold flex items-center">
                   {token.name}
                   <div className="flex items-center ml-3 bg-[#1A1A1A] px-2 py-0.5 rounded-lg">
@@ -196,7 +196,7 @@ const TokenDetail = () => {
                   </div>
                 </h1>
               </div>
-              <div className="flex items-center space-x-4 mt-2">
+              <div className="flex flex-wrap items-center gap-4 mt-2">
                 <span className="text-gray-400">{token.symbol}</span>
                 <button 
                   onClick={handleCopyAddress}
@@ -225,13 +225,13 @@ const TokenDetail = () => {
               </div>
             </div>
           </div>
-          <div className="flex items-center space-x-4">
-            <button className="px-4 py-2 bg-[#88D693] text-black rounded-lg hover:bg-[#88D693]/90">
+          <div className="flex flex-col md:flex-row items-stretch md:items-center space-y-2 md:space-y-0 md:space-x-4 w-full md:w-auto">
+            <button className="w-full md:w-auto px-4 py-2 bg-[#88D693] text-black rounded-lg hover:bg-[#88D693]/90">
               Add to Watchlist
             </button>
             <button 
               onClick={handleOpenAlertModal}
-              className="px-4 py-2 bg-[#1A1A1A] text-white rounded-lg hover:bg-[#222222]"
+              className="w-full md:w-auto px-4 py-2 bg-[#1A1A1A] text-white rounded-lg hover:bg-[#222222]"
             >
               Set Alerts
             </button>
@@ -312,7 +312,7 @@ const TokenDetail = () => {
         {activeTab === 'overview' && (
           <>
             {/* Market Overview & Trading Analysis */}
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <div className="card">
                 <h2 className="text-lg font-medium mb-4 flex items-center space-x-2">
                   <FaChartLine className="w-5 h-5 text-[#88D693]" />
@@ -437,7 +437,7 @@ const TokenDetail = () => {
             </div>
 
             {/* Additional Quick Stats */}
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="card p-4">
                 <div className="text-sm text-gray-400">Price Impact (100K)</div>
                 <div className="text-lg font-medium">2.5%</div>
@@ -461,76 +461,67 @@ const TokenDetail = () => {
             </div>
 
             {/* AI Analysis Summary */}
-            <div className="card">
-              <h2 className="text-lg font-medium mb-4 flex items-center space-x-2">
-                <FaRobot className="w-5 h-5 text-[#1DA1F2]" />
-                <span>AI Analysis Summary</span>
-                <div className="flex items-center ml-2 bg-[#88D693]/20 px-2 py-0.5 rounded">
-                  <span className="text-sm text-[#88D693]">92% Confidence</span>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Key Metrics */}
+              <div className="bg-[#1A1A1A] p-4 rounded-lg">
+                <div className="text-center">
+                  <div className="text-sm text-gray-400 mb-2">AI Recommendation</div>
+                  <div className="text-3xl font-bold text-[#88D693] mb-2">Strong Buy</div>
+                  <div className="inline-block bg-[#88D693]/20 px-3 py-1 rounded-full">
+                    <div className="text-sm text-[#88D693]">High Confidence</div>
+                  </div>
                 </div>
-              </h2>
-              <div className="grid grid-cols-3 gap-6">
-                {/* Key Metrics */}
-                <div className="bg-[#1A1A1A] p-4 rounded-lg">
-                  <div className="text-center">
-                    <div className="text-sm text-gray-400 mb-2">AI Recommendation</div>
-                    <div className="text-3xl font-bold text-[#88D693] mb-2">Strong Buy</div>
-                    <div className="inline-block bg-[#88D693]/20 px-3 py-1 rounded-full">
-                      <div className="text-sm text-[#88D693]">High Confidence</div>
+              </div>
+
+              {/* Strengths */}
+              <div className="bg-[#1A1A1A] p-4 rounded-lg">
+                <div className="text-sm text-gray-400">Strengths</div>
+                <div className="mt-2 space-y-2">
+                  {[
+                    'Strong community growth',
+                    'Active development',
+                    'High liquidity',
+                    'Positive sentiment'
+                  ].map((strength, i) => (
+                    <div key={i} className="flex items-center text-[#88D693] bg-[#88D693]/10 px-2 py-1 rounded">
+                      <FaCheckCircle className="w-3 h-3 mr-2 flex-shrink-0" />
+                      <span className="text-sm">{strength}</span>
                     </div>
-                  </div>
-                </div>
-
-                {/* Strengths */}
-                <div className="bg-[#1A1A1A] p-4 rounded-lg">
-                  <div className="text-sm text-gray-400">Strengths</div>
-                  <div className="mt-2 space-y-2">
-                    {[
-                      'Strong community growth',
-                      'Active development',
-                      'High liquidity',
-                      'Positive sentiment'
-                    ].map((strength, i) => (
-                      <div key={i} className="flex items-center text-[#88D693] bg-[#88D693]/10 px-2 py-1 rounded">
-                        <FaCheckCircle className="w-3 h-3 mr-2 flex-shrink-0" />
-                        <span className="text-sm">{strength}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Risks */}
-                <div className="bg-[#1A1A1A] p-4 rounded-lg">
-                  <div className="text-sm text-gray-400">Risks & Considerations</div>
-                  <div className="mt-2 space-y-2">
-                    {[
-                      'High volatility',
-                      'Mint function',
-                      'High competition'
-                    ].map((risk, i) => (
-                      <div key={i} className="flex items-center text-[rgb(240,148,164)] bg-[rgb(240,148,164)]/10 px-2 py-1 rounded">
-                        <FaExclamationTriangle className="w-3 h-3 mr-2 flex-shrink-0" />
-                        <span className="text-sm">{risk}</span>
-                      </div>
-                    ))}
-                  </div>
+                  ))}
                 </div>
               </div>
 
-              {/* AI Metrics */}
-              <div className="grid grid-cols-4 gap-4 mt-6">
-                {[
-                  { label: 'Growth Potential', value: '85%', color: '#88D693' },
-                  { label: 'Risk Level', value: 'Low', color: '#88D693' },
-                  { label: 'Market Timing', value: 'Optimal', color: 'rgb(255,208,57)' },
-                  { label: 'Overall Score', value: '92/100', color: '#88D693' }
-                ].map((metric, i) => (
-                  <div key={i} className="bg-[#1A1A1A] p-3 rounded-lg text-center">
-                    <div className="text-sm text-gray-400 mb-1">{metric.label}</div>
-                    <div className="text-lg font-medium" style={{ color: metric.color }}>{metric.value}</div>
-                  </div>
-                ))}
+              {/* Risks */}
+              <div className="bg-[#1A1A1A] p-4 rounded-lg">
+                <div className="text-sm text-gray-400">Risks & Considerations</div>
+                <div className="mt-2 space-y-2">
+                  {[
+                    'High volatility',
+                    'Mint function',
+                    'High competition'
+                  ].map((risk, i) => (
+                    <div key={i} className="flex items-center text-[rgb(240,148,164)] bg-[rgb(240,148,164)]/10 px-2 py-1 rounded">
+                      <FaExclamationTriangle className="w-3 h-3 mr-2 flex-shrink-0" />
+                      <span className="text-sm">{risk}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
+            </div>
+
+            {/* AI Metrics */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+              {[
+                { label: 'Growth Potential', value: '85%', color: '#88D693' },
+                { label: 'Risk Level', value: 'Low', color: '#88D693' },
+                { label: 'Market Timing', value: 'Optimal', color: 'rgb(255,208,57)' },
+                { label: 'Overall Score', value: '92/100', color: '#88D693' }
+              ].map((metric, i) => (
+                <div key={i} className="bg-[#1A1A1A] p-3 rounded-lg text-center">
+                  <div className="text-sm text-gray-400 mb-1">{metric.label}</div>
+                  <div className="text-lg font-medium" style={{ color: metric.color }}>{metric.value}</div>
+                </div>
+              ))}
             </div>
           </>
         )}
@@ -538,7 +529,7 @@ const TokenDetail = () => {
         {activeTab === 'market' && (
           <>
             {/* Market Overview & Trading Analysis */}
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <div className="card">
                 <h2 className="text-lg font-medium mb-4 flex items-center space-x-2">
                   <FaChartLine className="w-5 h-5 text-[#88D693]" />
@@ -769,7 +760,7 @@ const TokenDetail = () => {
               {/* Category Performance */}
               <div className="mt-6">
                 <h3 className="text-sm font-medium mb-2">Category Performance</h3>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="bg-[#1A1A1A] p-4 rounded-lg">
                     <div className="text-sm text-gray-400">Market Share</div>
                     <div className="text-xl font-medium">5.2%</div>
@@ -785,64 +776,52 @@ const TokenDetail = () => {
             </div>
 
             {/* Supply Analysis */}
-            <div className="card">
-              <h2 className="text-lg font-medium mb-4 flex items-center space-x-2">
-                <FaCoins className="w-5 h-5 text-[rgb(255,208,57)]" />
-                <span>Supply Analysis</span>
-              </h2>
-              <div className="grid grid-cols-3 gap-6">
-                <div>
-                  <div className="text-sm text-gray-400">Total Supply</div>
-                  <div className="text-xl font-medium">{formatNumber(token.totalSupply)}</div>
-                  <div className="text-sm text-gray-400">Tokens</div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div>
+                <div className="text-sm text-gray-400">Total Supply</div>
+                <div className="text-xl font-medium">{formatNumber(token.totalSupply)}</div>
+                <div className="text-sm text-gray-400">Tokens</div>
+              </div>
+              <div>
+                <div className="text-sm text-gray-400">Circulating Supply</div>
+                <div className="text-xl font-medium">
+                  {formatPercent(token.circulatingSupply / token.totalSupply * 100)}
                 </div>
-                <div>
-                  <div className="text-sm text-gray-400">Circulating Supply</div>
-                  <div className="text-xl font-medium">
-                    {formatPercent(token.circulatingSupply / token.totalSupply * 100)}
-                  </div>
-                  <div className="text-sm text-gray-400">of Total Supply</div>
-                </div>
-                <div>
-                  <div className="text-sm text-gray-400">Burn Rate (24h)</div>
-                  <div className="text-xl font-medium text-[#88D693]">+2.5%</div>
-                  <div className="text-sm text-gray-400">Tokens Burned</div>
-                </div>
+                <div className="text-sm text-gray-400">of Total Supply</div>
+              </div>
+              <div>
+                <div className="text-sm text-gray-400">Burn Rate (24h)</div>
+                <div className="text-xl font-medium text-[#88D693]">+2.5%</div>
+                <div className="text-sm text-gray-400">Tokens Burned</div>
               </div>
             </div>
 
             {/* Liquidity Analysis */}
-            <div className="card">
-              <h2 className="text-lg font-medium mb-4 flex items-center space-x-2">
-                <FaWater className="w-5 h-5 text-[rgb(147,197,253)]" />
-                <span>Liquidity Analysis</span>
-              </h2>
-              <div className="grid grid-cols-2 gap-6">
-                <div className="bg-[#1A1A1A] p-4 rounded-lg">
-                  <div className="text-sm text-gray-400">Liquidity Depth</div>
-                  <div className="text-xl font-medium">$500K</div>
-                  <div className="mt-2 space-y-1">
-                    <div className="flex justify-between">
-                      <span className="text-sm">2% Price Impact</span>
-                      <span className="text-sm">$25K</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-sm">5% Price Impact</span>
-                      <span className="text-sm">$75K</span>
-                    </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-[#1A1A1A] p-4 rounded-lg">
+                <div className="text-sm text-gray-400">Liquidity Depth</div>
+                <div className="text-xl font-medium">$500K</div>
+                <div className="mt-2 space-y-1">
+                  <div className="flex justify-between">
+                    <span className="text-sm">2% Price Impact</span>
+                    <span className="text-sm">$25K</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm">5% Price Impact</span>
+                    <span className="text-sm">$75K</span>
                   </div>
                 </div>
-                <div className="bg-[#1A1A1A] p-4 rounded-lg">
-                  <div className="text-sm text-gray-400">Liquidity Distribution</div>
-                  <div className="mt-2 space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm">Raydium</span>
-                      <span className="text-sm">65%</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm">Orca</span>
-                      <span className="text-sm">35%</span>
-                    </div>
+              </div>
+              <div className="bg-[#1A1A1A] p-4 rounded-lg">
+                <div className="text-sm text-gray-400">Liquidity Distribution</div>
+                <div className="mt-2 space-y-2">
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm">Raydium</span>
+                    <span className="text-sm">65%</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm">Orca</span>
+                    <span className="text-sm">35%</span>
                   </div>
                 </div>
               </div>
@@ -1006,29 +985,23 @@ const TokenDetail = () => {
             </div>
 
             {/* Supply Analysis */}
-            <div className="card">
-              <h2 className="text-lg font-medium mb-4 flex items-center space-x-2">
-                <FaCoins className="w-5 h-5 text-[rgb(255,208,57)]" />
-                <span>Supply Analysis</span>
-              </h2>
-              <div className="grid grid-cols-3 gap-6">
-                <div>
-                  <div className="text-sm text-gray-400">Total Supply</div>
-                  <div className="text-xl font-medium">{formatNumber(token.totalSupply)}</div>
-                  <div className="text-sm text-gray-400">Tokens</div>
+            <div className="grid grid-cols-3 gap-6">
+              <div>
+                <div className="text-sm text-gray-400">Total Supply</div>
+                <div className="text-xl font-medium">{formatNumber(token.totalSupply)}</div>
+                <div className="text-sm text-gray-400">Tokens</div>
+              </div>
+              <div>
+                <div className="text-sm text-gray-400">Circulating Supply</div>
+                <div className="text-xl font-medium">
+                  {formatPercent(token.circulatingSupply / token.totalSupply * 100)}
                 </div>
-                <div>
-                  <div className="text-sm text-gray-400">Circulating Supply</div>
-                  <div className="text-xl font-medium">
-                    {formatPercent(token.circulatingSupply / token.totalSupply * 100)}
-                  </div>
-                  <div className="text-sm text-gray-400">of Total Supply</div>
-                </div>
-                <div>
-                  <div className="text-sm text-gray-400">Burn Rate (24h)</div>
-                  <div className="text-xl font-medium text-[#88D693]">+2.5%</div>
-                  <div className="text-sm text-gray-400">Tokens Burned</div>
-                </div>
+                <div className="text-sm text-gray-400">of Total Supply</div>
+              </div>
+              <div>
+                <div className="text-sm text-gray-400">Burn Rate (24h)</div>
+                <div className="text-xl font-medium text-[#88D693]">+2.5%</div>
+                <div className="text-sm text-gray-400">Tokens Burned</div>
               </div>
             </div>
           </>
@@ -1397,8 +1370,8 @@ const TokenDetail = () => {
       </div>
 
       {/* Quick Actions - Always visible */}
-      <div className="flex items-center space-x-2">
-        <div className="flex items-center space-x-2 mr-4">
+      <div className="flex flex-col md:flex-row items-start md:items-center space-y-2 md:space-y-0 md:space-x-2">
+        <div className="flex flex-wrap gap-2 mr-0 md:mr-4">
           <span className="text-sm text-gray-400">Charts:</span>
           <a 
             href={`https://dexscreener.com/solana/${token.address}`}
@@ -1428,15 +1401,17 @@ const TokenDetail = () => {
             <span>Birdeye</span>
           </a>
         </div>
-        <div className="border-l border-[#333333] h-6 mx-2" />
-        <button className="text-sm bg-[#1A1A1A] px-3 py-1 rounded-lg hover:bg-[#222222] flex items-center space-x-1">
-          <FaExchangeAlt className="w-4 h-4" />
-          <span>View on Explorer</span>
-        </button>
-        <button className="text-sm bg-[#1A1A1A] px-3 py-1 rounded-lg hover:bg-[#222222] flex items-center space-x-1">
-          <ChartBarIcon className="w-4 h-4" />
-          <span>Share Token</span>
-        </button>
+        <div className="hidden md:block border-l border-[#333333] h-6 mx-2" />
+        <div className="flex flex-wrap gap-2">
+          <button className="text-sm bg-[#1A1A1A] px-3 py-1 rounded-lg hover:bg-[#222222] flex items-center space-x-1">
+            <FaExchangeAlt className="w-4 h-4" />
+            <span>View on Explorer</span>
+          </button>
+          <button className="text-sm bg-[#1A1A1A] px-3 py-1 rounded-lg hover:bg-[#222222] flex items-center space-x-1">
+            <ChartBarIcon className="w-4 h-4" />
+            <span>Share Token</span>
+          </button>
+        </div>
       </div>
 
       {/* Token Tags - Always visible */}
