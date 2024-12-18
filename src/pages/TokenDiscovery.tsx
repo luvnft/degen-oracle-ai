@@ -8,6 +8,7 @@ import Switch from '../components/form/Switch';
 import Button from '../components/form/Button';
 import { Disclosure } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import { TokenDetailInfo } from '../types';
 
 type ScanMode = 'ai' | 'manual';
 

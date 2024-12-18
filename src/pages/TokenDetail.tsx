@@ -20,11 +20,20 @@ const TokenDetail = () => {
   const [isAlertModalOpen, setIsAlertModalOpen] = useState(false);
   const [alertSettings, setAlertSettings] = useState<AlertSettings>({
     priceChange: true,
-    priceChangeThreshold: 10,
-    volumeChange: true, 
-    volumeChangeThreshold: 100,
+    volumeChange: true,
     holdersChange: true,
-    holdersChangeThreshold: 20
+    enablePriceAlerts: true,
+    enableVolumeAlerts: true,
+    enableHoldersAlerts: true,
+    priceChangeThreshold: 10,
+    volumeChangeThreshold: 100,
+    holdersChangeThreshold: 20,
+    maxAlertsPerDay: 50,
+    alertCooldownMinutes: 30,
+    notificationChannels: {
+      telegram: true,
+      email: false
+    }
   });
 
   if (loading) {
@@ -323,8 +332,8 @@ const TokenDetail = () => {
                       <span>Price</span>
                     </div>
                     <div className="text-xl font-medium">${formatNumber(token.currentPrice)}</div>
-                    <div className={`text-sm ${token.priceChange1h >= 0 ? 'text-[#88D693]' : 'text-[rgb(240,148,164)]'}`}>
-                      {formatPercent(token.priceChange1h)} (1h)
+                    <div className={`text-sm ${(token.priceChange1h ?? 0) >= 0 ? 'text-[#88D693]' : 'text-[rgb(240,148,164)]'}`}>
+                      {formatPercent(token.priceChange1h ?? 0)} (1h)
                     </div>
                   </div>
                   <div>
@@ -549,8 +558,8 @@ const TokenDetail = () => {
                       <span>Price</span>
                     </div>
                     <div className="text-xl font-medium">${formatNumber(token.currentPrice)}</div>
-                    <div className={`text-sm ${token.priceChange1h >= 0 ? 'text-[#88D693]' : 'text-[rgb(240,148,164)]'}`}>
-                      {formatPercent(token.priceChange1h)} (1h)
+                    <div className={`text-sm ${(token.priceChange1h ?? 0) >= 0 ? 'text-[#88D693]' : 'text-[rgb(240,148,164)]'}`}>
+                      {formatPercent(token.priceChange1h ?? 0)} (1h)
                     </div>
                   </div>
                   <div>

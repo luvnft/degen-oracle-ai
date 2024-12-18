@@ -15,6 +15,7 @@ export const mockTokens: TokenDetailInfo[] = [
     priceChange1m: 1.5,
     priceChange24h: 15.2,
     topHoldersPercent: 45,
+    top10HoldersPercent: 45,
     tags: ['AI', 'Oracle'],
     devActivity: {
       action: 'hold'
@@ -64,6 +65,7 @@ export const mockTokens: TokenDetailInfo[] = [
     priceChange5m: -1.2,
     priceChange1m: -0.8,
     topHoldersPercent: 38,
+    top10HoldersPercent: 38,
     tags: ['AI', 'Agent'],
     devActivity: {
       action: 'add'
@@ -114,6 +116,7 @@ export const mockTokens: TokenDetailInfo[] = [
     priceChange5m: 3.2,
     priceChange1m: 2.1,
     topHoldersPercent: 42,
+    top10HoldersPercent: 42,
     tags: ['AI', 'DeepLearning'],
     devActivity: {
       action: 'add'
@@ -164,6 +167,7 @@ export const mockTokens: TokenDetailInfo[] = [
     priceChange5m: -0.8,
     priceChange1m: -0.3,
     topHoldersPercent: 35,
+    top10HoldersPercent: 35,
     tags: ['AI', 'Neural'],
     devActivity: {
       action: 'hold'
@@ -214,6 +218,7 @@ export const mockTokens: TokenDetailInfo[] = [
     priceChange5m: 4.2,
     priceChange1m: 3.1,
     topHoldersPercent: 48,
+    top10HoldersPercent: 48,
     tags: ['AI', 'GPT'],
     devActivity: {
       action: 'add'
@@ -264,6 +269,7 @@ export const mockTokens: TokenDetailInfo[] = [
     priceChange5m: -2.1,
     priceChange1m: -1.5,
     topHoldersPercent: 52,
+    top10HoldersPercent: 52,
     tags: ['AI', 'Robotics'],
     devActivity: {
       action: 'sell'
@@ -314,6 +320,7 @@ export const mockTokens: TokenDetailInfo[] = [
     priceChange5m: 2.8,
     priceChange1m: 1.9,
     topHoldersPercent: 41,
+    top10HoldersPercent: 41,
     tags: ['AI', 'ML'],
     devActivity: {
       action: 'hold'
@@ -364,6 +371,7 @@ export const mockTokens: TokenDetailInfo[] = [
     priceChange5m: -1.5,
     priceChange1m: -0.9,
     topHoldersPercent: 39,
+    top10HoldersPercent: 39,
     tags: ['AI', 'Assistant'],
     devActivity: {
       action: 'hold'
@@ -414,6 +422,7 @@ export const mockTokens: TokenDetailInfo[] = [
     priceChange5m: 3.1,
     priceChange1m: 2.2,
     topHoldersPercent: 44,
+    top10HoldersPercent: 44,
     tags: ['AI', 'Agent', 'Neural'],
     devActivity: {
       action: 'add'
@@ -464,6 +473,7 @@ export const mockTokens: TokenDetailInfo[] = [
     priceChange5m: 1.9,
     priceChange1m: 1.2,
     topHoldersPercent: 47,
+    top10HoldersPercent: 47,
     tags: ['AI', 'Network'],
     devActivity: {
       action: 'hold'

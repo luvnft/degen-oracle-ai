@@ -1,21 +1,9 @@
 import React, { useState } from 'react';
 import TokenTable from '../components/tokens/TokenTable';
 import { useTokenStore } from '../store/tokenStore';
-import { MagnifyingGlassIcon, FunnelIcon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import { Input } from '../components/form/Input';
-import Switch from '../components/form/Switch';
-import AlertSettingsModal from '../components/modals/AlertSettingsModal';
+import { MagnifyingGlassIcon, FunnelIcon } from '@heroicons/react/24/outline';
 import { FilterModal } from '../components/modals/FilterModal';
-import { AlertSettings, TokenDetailInfo } from '../types';
-
-const initialAlertSettings: AlertSettings = {
-  priceChange: true,
-  priceChangeThreshold: 10,
-  volumeChange: true,
-  volumeChangeThreshold: 100,
-  holdersChange: true,
-  holdersChangeThreshold: 20
-};
+import { TokenDetailInfo } from '../types';
 
 interface FilterSettings {
   minPrice: string;
@@ -44,33 +32,15 @@ const initialFilters: FilterSettings = {
 export default function Watchlist() {
   const { tokens, loading, error } = useTokenStore();
   const [searchQuery, setSearchQuery] = useState('');
-  const [isAlertSettingsOpen, setIsAlertSettingsOpen] = useState(false);
   const [filters, setFilters] = useState<FilterSettings>(initialFilters);
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
-  const [alertSettings, setAlertSettings] = useState<AlertSettings>(initialAlertSettings);
 
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex justify-between items-center">
-        <div>
-          <h1 className="text-2xl font-bold">Watchlist</h1>
-          <p className="text-gray-400">Track and monitor your selected AI tokens</p>
-        </div>
-
-        {/* Alert Settings Button */}
-        <button
-          onClick={() => setIsAlertSettingsOpen(true)}
-          className="
-            flex items-center px-4 py-2 space-x-2
-            bg-black rounded-xl border border-[#333333]
-            text-gray-400 hover:text-white
-            transition-colors duration-200
-          "
-        >
-          <BellIcon className="w-5 h-5" />
-          <span>Alert Settings</span>
-        </button>
+      <div>
+        <h1 className="text-2xl font-bold">Watchlist</h1>
+        <p className="text-gray-400">Track and monitor your selected AI tokens</p>
       </div>
 
       {/* Search & Filters */}
@@ -116,17 +86,6 @@ export default function Watchlist() {
           error={error}
         />
       </div>
-
-      {/* Alert Settings Modal */}
-      <AlertSettingsModal
-        isOpen={isAlertSettingsOpen}
-        onClose={() => setIsAlertSettingsOpen(false)}
-        settings={alertSettings}
-        onSave={(newSettings: AlertSettings) => {
-          setAlertSettings(newSettings);
-          setIsAlertSettingsOpen(false);
-        }}
-      />
 
       {/* Filter Modal */}
       <FilterModal

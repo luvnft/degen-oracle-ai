@@ -5,6 +5,7 @@ import { PieChart } from '../components/charts/PieChart';
 import Select from '../components/form/Select';
 import { TrendCharts } from '../components/trends/TrendCharts';
 import TokenTable from '../components/tokens/TokenTable';
+import { TokenDetailInfo } from '../types';
 
 export default function Trends() {
   const [timeRange, setTimeRange] = useState<'24h' | '7d' | '30d'>('24h');
@@ -49,7 +50,7 @@ export default function Trends() {
   }));
 
   // Mock data for top tokens
-  const topTokens = [
+  const topTokens: TokenDetailInfo[] = [
     {
       name: 'DegenAI',
       symbol: 'DGNAI',
@@ -58,7 +59,6 @@ export default function Trends() {
       liquidity: 150000,
       marketCap: 800000,
       holders: 2200,
-      hourlyTransactions: 0,
       hourlyVolume: 35000,
       price: 0.45,
       currentPrice: 0.45,
@@ -66,8 +66,11 @@ export default function Trends() {
       priceChange5m: -1.20,
       priceChange1m: -0.80,
       priceChange24h: -3.50,
+      topHoldersPercent: 38,
       top10HoldersPercent: 38,
-      devActivity: { action: 'ADD' },
+      devActivity: {
+        action: 'add'
+      },
       twitter: 'https://twitter.com/degenai',
       telegram: 'https://t.me/degenai',
       website: 'https://degenai.io',
@@ -77,6 +80,26 @@ export default function Trends() {
       circulatingSupply: 750000000,
       transactions1h: 45,
       volume1h: 35000,
+      change1m: -0.80,
+      change5m: -1.20,
+      change1h: -2.50,
+      fdv: 1500000,
+      liquidityPairs: ['SOL-USDC', 'SOL-USDT'],
+      contractVerified: true,
+      proxyContract: false,
+      lockDuration: 365,
+      socialMetrics: {
+        twitter: {
+          followers: 12500,
+          engagement: 3.2,
+          growth24h: 5.2
+        },
+        telegram: {
+          members: 8200,
+          active: 1500,
+          growth24h: 2.8
+        }
+      }
     },
     {
       name: 'Neural Net',
@@ -86,7 +109,6 @@ export default function Trends() {
       liquidity: 150000,
       marketCap: 950000,
       holders: 1200,
-      hourlyTransactions: 0,
       hourlyVolume: 45000,
       price: 0.85,
       currentPrice: 0.85,
@@ -94,8 +116,11 @@ export default function Trends() {
       priceChange5m: -0.80,
       priceChange1m: -0.30,
       priceChange24h: -2.20,
+      topHoldersPercent: 35,
       top10HoldersPercent: 35,
-      devActivity: { action: 'HOLD' },
+      devActivity: {
+        action: 'hold'
+      },
       twitter: 'https://twitter.com/neuralnet',
       telegram: 'https://t.me/neuralnet',
       website: 'https://neuralnet.io',
@@ -105,8 +130,27 @@ export default function Trends() {
       circulatingSupply: 350000000,
       transactions1h: 38,
       volume1h: 45000,
-    },
-    // ... Add more tokens as needed
+      change1m: -0.30,
+      change5m: -0.80,
+      change1h: -1.50,
+      fdv: 1500000,
+      liquidityPairs: ['SOL-USDC', 'SOL-USDT'],
+      contractVerified: true,
+      proxyContract: false,
+      lockDuration: 365,
+      socialMetrics: {
+        twitter: {
+          followers: 12500,
+          engagement: 3.2,
+          growth24h: 5.2
+        },
+        telegram: {
+          members: 8200,
+          active: 1500,
+          growth24h: 2.8
+        }
+      }
+    }
   ];
 
   return (

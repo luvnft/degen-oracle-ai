@@ -1,8 +1,9 @@
 import { create } from 'zustand';
 import { mockTokens } from '../mocks/tokens';
+import { TokenDetailInfo } from '../types';
 
 interface TokenStore {
-  tokens: typeof mockTokens;
+  tokens: TokenDetailInfo[];
   loading: boolean;
   error: string | null;
   fetchTokens: (filters?: any) => Promise<void>;

@@ -77,16 +77,20 @@ export interface TabItem {
 }
 
 export interface AlertSettings {
+  priceChange: boolean;
+  volumeChange: boolean;
+  holdersChange: boolean;
+  enablePriceAlerts: boolean;
+  enableVolumeAlerts: boolean;
+  enableHoldersAlerts: boolean;
   priceChangeThreshold: number;
   volumeChangeThreshold: number;
   holdersChangeThreshold: number;
   maxAlertsPerDay: number;
   alertCooldownMinutes: number;
-  enablePriceAlerts: boolean;
-  enableVolumeAlerts: boolean;
-  enableHoldersAlerts: boolean;
   notificationChannels: {
     telegram: boolean;
     email: boolean;
   };
-} 
+}
+ 

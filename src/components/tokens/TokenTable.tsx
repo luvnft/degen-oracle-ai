@@ -1,7 +1,7 @@
 import React from 'react';
 import Table from '../shared/Table';
 import { formatNumber, formatPercent, shortenAddress } from '../../utils/format';
-import { TokenInfo } from '../../types/TokenList';
+import { TokenDetailInfo } from '../../types';
 import { FaTwitter, FaTelegram, FaGlobe } from 'react-icons/fa';
 import { DocumentDuplicateIcon } from '@heroicons/react/24/outline';
 import { TagIcon } from '@heroicons/react/24/solid';
@@ -10,7 +10,7 @@ import { StarIcon as StarSolid } from '@heroicons/react/24/solid';
 import { Link } from 'react-router-dom';
 
 interface TokenTableProps {
-  data: TokenInfo[];
+  data: TokenDetailInfo[];
   loading?: boolean;
   error?: string | null;
 }
@@ -66,7 +66,7 @@ const TokenTable = ({ data, loading = false, error = null }: TokenTableProps) =>
       key: 'name',
       title: 'Token',
       width: 'w-64',
-      render: (value: string, record: TokenInfo) => (
+      render: (value: string, record: TokenDetailInfo) => (
         <div className="flex items-center space-x-2">
           <button
             onClick={() => handleAddToWatchlist(record.address)}
@@ -146,7 +146,7 @@ const TokenTable = ({ data, loading = false, error = null }: TokenTableProps) =>
       key: 'marketCap',
       title: 'Liq/MCap',
       width: 'w-28',
-      render: (value: number, record: TokenInfo) => (
+      render: (value: number, record: TokenDetailInfo) => (
         <div className="text-xs">
           <div className="text-gray-300">
             ${formatNumber(record.liquidity)}
@@ -246,15 +246,15 @@ const TokenTable = ({ data, loading = false, error = null }: TokenTableProps) =>
       key: 'devActivity',
       title: 'Dev',
       width: 'w-16',
-      render: (value: { action: 'HOLD' | 'ADD' | 'SELL_ALL' }) => {
+      render: (value: { action: 'hold' | 'add' | 'sell' }) => {
         const colors = {
-          HOLD: 'text-[rgb(255,208,57)]',
-          ADD: 'text-[#88D693]',
-          SELL_ALL: 'text-[rgb(240,148,164)]'
+          hold: 'text-[rgb(255,208,57)]',
+          add: 'text-[#88D693]',
+          sell: 'text-[rgb(240,148,164)]'
         };
         return (
           <span className={`text-xs ${colors[value.action]}`}>
-            {value.action}
+            {value.action.toUpperCase()}
           </span>
         );
       }

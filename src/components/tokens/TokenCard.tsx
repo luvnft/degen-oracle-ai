@@ -1,14 +1,13 @@
 import React from 'react';
-import { TokenInfo } from '../../types/TokenList';
+import { TokenDetailInfo } from '../../types';
 import { formatNumber, formatPercent, shortenAddress } from '../../utils/format';
 import { FaTwitter, FaTelegram, FaGlobe } from 'react-icons/fa';
 
 interface TokenCardProps {
-  token: TokenInfo;
-  onClose: () => void;
+  token: TokenDetailInfo;
 }
 
-const TokenCard = ({ token, onClose }: TokenCardProps) => {
+const TokenCard = ({ token }: TokenCardProps) => {
   return (
     <div className="bg-[#111111] rounded-lg border border-[#333333] p-4 w-96">
       {/* Header */}
@@ -28,12 +27,6 @@ const TokenCard = ({ token, onClose }: TokenCardProps) => {
             </div>
           </div>
         </div>
-        <button
-          onClick={onClose}
-          className="text-gray-500 hover:text-white"
-        >
-          ×
-        </button>
       </div>
 
       {/* Key Metrics */}
